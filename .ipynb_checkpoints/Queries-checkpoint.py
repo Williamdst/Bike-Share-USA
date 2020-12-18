@@ -1,4 +1,4 @@
-def countTrips(conn):
+def countYearlyTrips(conn):   # Query-0001
     cursor = conn.cursor()
     
     countTrips_query = """
@@ -17,7 +17,7 @@ def countTrips(conn):
 
 "============================================================================="
 
-def countNJTrips(conn):
+def countYearlyNJTrips(conn): # Query-0002
     cursor = conn.cursor()
     
     countNJTrips_query = """
@@ -50,3 +50,25 @@ def countNJTrips(conn):
     return (colnames, data)
 
 "============================================================================="
+
+def deleteNJTrips(conn) -> None:
+    cursor = conn.cursor()
+
+    deleteNJTrips_query = """
+                DELETE FROM trip
+                WHERE startid NOT IN (
+                       SELECT stationid
+                         FROM station
+                        WHERE trip.startid = stationid
+                        )
+                    OR endid NOT IN (
+                        SELECT stationid 
+                          FROM station
+                         WHERE trip.endid = stationid
+                        )
+                """
+    
+    cursor.execute("rollback")
+    cursor.execute(deleteNJTrips_query)
+    
+    return None
