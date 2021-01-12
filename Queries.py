@@ -104,7 +104,7 @@ def create_foreign_key(conn, fk_table, fk_col, ref_table, ref_col, fk_name=''): 
 
 "============================================================================="
 
-def get_random_100k_rows(conn, shuffles: int=1, distance: bool=False) -> pd.DataFrame():
+def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: bool=False) -> pd.DataFrame():
     """
     Randomly Samples 1% of data (1M rows) shuffles it and then takes the first n 100K rows
     """
@@ -140,6 +140,14 @@ def get_random_100k_rows(conn, shuffles: int=1, distance: bool=False) -> pd.Data
         data = cursor.fetchall()
         row_data = pd.concat([row_data, pd.DataFrame(data, columns=colnames)], ignore_index=True)
     
+    row_data = row_data.astype({'startid':'int','endid':'int','usertype':'category','gender':'category'})
+    
+    if distance and speed:
+        row_data['distance'] = pd.to_numeric(row_data.distance)
+        row_data['MPH'] = row_data.distance / (row_data.tripduration / 60)
+    if distance:
+        row_data['distance'] = pd.to_numeric(row_data.distance)
+    
     return row_data
 
 "============================================================================="
@@ -163,7 +171,7 @@ def delete_duration_outliers(conn) -> None: #(Tables)
              WHERE tripduration > 96
                 """
     
-    cursor.execute(delete_duration_outliers)
+    cursor.execute(delete_duration_query)
     conn.commit()    
     return None
 
@@ -193,11 +201,11 @@ def delete_time_swaps(conn) -> None: #(Tables)
     cursor = conn.cursor()
     cursor.execute("rollback")
 
-    delete_duration_query = """
+    delete_swap_query = """
              DELETE FROM trip
              WHERE starttime > endtime
                 """
     
-    cursor.execute(delete_duration_outliers)
+    cursor.execute(delete_swap_query)
     conn.commit()    
     return None
