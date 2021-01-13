@@ -1,6 +1,23 @@
 import pandas as pd
 
-def countYearlyTrips(conn) -> pd.DataFrame():   # Query-0001 (Analyze)
+def execute_query(conn, query, to_frame=False):
+    cursor = conn.cursor()
+    cursor.execute("rollback;")
+    cursor.execute(query)
+    
+    if to_frame:
+        colnames = [desc[0] for desc in cursor.description]
+        data = cursor.fetchall()
+        df = pd.DataFrame(data,columns=colnames)
+        conn.commit()
+        return df
+    else:
+        conn.commit()
+        return None
+
+"============================================================================="
+
+def countYearlyTrips(conn) -> pd.DataFrame():   # Query-0001 (Analyze) - GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute("rollback")
   
@@ -20,7 +37,7 @@ def countYearlyTrips(conn) -> pd.DataFrame():   # Query-0001 (Analyze)
 
 "============================================================================="
 
-def countYearlyNJTrips(conn): # Query-0002 (Analyze)
+def countYearlyNJTrips(conn): # Query-0002 (Analyze) - GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute("rollback")
    
@@ -55,7 +72,7 @@ def countYearlyNJTrips(conn): # Query-0002 (Analyze)
 
 "============================================================================="
 
-def deleteNJTrips(conn) -> None: #(Tables)
+def deleteNJTrips(conn) -> None: #(Tables) - GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute("rollback")
 
@@ -152,7 +169,7 @@ def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: boo
 
 "============================================================================="
 
-def VACUUM(conn):
+def VACUUM(conn): # GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute('rollback;')
     cursor.execute('VACUUM;')
@@ -162,7 +179,7 @@ def VACUUM(conn):
 "============================================================================="
 
 
-def delete_duration_outliers(conn) -> None: #(Tables)
+def delete_duration_outliers(conn) -> None: #(Tables) GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute("rollback")
 
@@ -178,7 +195,7 @@ def delete_duration_outliers(conn) -> None: #(Tables)
 "============================================================================="
 
 
-def find_time_swaps(conn) -> pd.DataFrame():
+def find_time_swaps(conn) -> pd.DataFrame(): # GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute('rollback;')
     
@@ -197,9 +214,9 @@ def find_time_swaps(conn) -> pd.DataFrame():
 "============================================================================="
 
 
-def delete_time_swaps(conn) -> None: #(Tables)
+def delete_time_swaps(conn) -> None: #(Tables) GENERIC QUERY
     cursor = conn.cursor()
-    cursor.execute("rollback")
+    cursor.execute("rollback;")
 
     delete_swap_query = """
              DELETE FROM trip
@@ -209,3 +226,27 @@ def delete_time_swaps(conn) -> None: #(Tables)
     cursor.execute(delete_swap_query)
     conn.commit()    
     return None
+
+"============================================================================="
+
+def recreate_trip(conn) -> None: #(TAbles) - GENERIC QUERY
+    cursor = conn.cursor()
+    cursor.execute("rollback;")
+    
+    create_tripds_query = """
+                create table trip_ds as (
+                SELECT tp.*, 
+                       ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS NUMERIC),2) AS distance,
+                       ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 / (tp.tripduration/60) AS NUMERIC) , 2) AS speed
+                  FROM trip AS tp
+                       LEFT JOIN station AS s1
+                            ON tp.startid = s1.stationid
+                       LEFT JOIN station AS s2
+                            ON tp.endid = s2.stationid
+                );
+                """
+    cursor.execute(create_tripds_query)
+    conn.commmit()
+    return None
+
+"============================================================================="
