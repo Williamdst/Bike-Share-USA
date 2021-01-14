@@ -1,16 +1,20 @@
 import pandas as pd
 
-def execute_query(conn, query, to_frame=False):
+def execute_query(conn, query, cols_data=False, to_frame=False):
     cursor = conn.cursor()
     cursor.execute("rollback;")
     cursor.execute(query)
-    
+    conn.commit()
+
     if to_frame:
         colnames = [desc[0] for desc in cursor.description]
         data = cursor.fetchall()
         df = pd.DataFrame(data,columns=colnames)
-        conn.commit()
         return df
+    elif cols_data:
+        colnames = [desc[0] for desc in cursor.description]
+        data = cursor.fetchall()
+        return (data, colnames)
     else:
         conn.commit()
         return None
@@ -246,6 +250,32 @@ def recreate_trip(conn) -> None: #(TAbles) - GENERIC QUERY
                 );
                 """
     cursor.execute(create_tripds_query)
+    conn.commmit()
+    return None
+
+"============================================================================="
+
+def birth_certificate(conn) -> None:
+    cursor = conn.cursor()
+    cursor.execute("rollback;")
+    
+    birth_certificate_query = """
+                WITH timestamps AS (
+                    SELECT DISTINCT startid, 
+                                    MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
+                                    MAX(DATE_TRUNC('day',starttime)::date) over w AS death
+                      FROM trip_ds
+                    WINDOW w as (PARTITION BY startid)
+                )
+            
+                UPDATE station AS s
+                   SET birth = ts.birth,
+                       death = ts.death
+                  FROM timestamps AS ts
+                 WHERE s.stationid = ts.startid;
+                """
+    
+    cursor.execute(birth_certificate_query)
     conn.commmit()
     return None
 
