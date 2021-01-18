@@ -125,7 +125,7 @@ def create_foreign_key(conn, fk_table, fk_col, ref_table, ref_col, fk_name=''): 
 
 "============================================================================="
 
-def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: bool=False) -> pd.DataFrame():
+def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: bool=False) -> pd.DataFrame(): #Analyze
     """
     Randomly Samples 1% of data (1M rows) shuffles it and then takes the first n 100K rows
     """
@@ -161,7 +161,7 @@ def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: boo
         data = cursor.fetchall()
         row_data = pd.concat([row_data, pd.DataFrame(data, columns=colnames)], ignore_index=True)
     
-    row_data = row_data.astype({'startid':'int','endid':'int','usertype':'category','gender':'category'})
+    row_data = row_data.astype({'startid':'int', 'endid':'int','usertype':'category','gender':'category'})
     
     if distance and speed:
         row_data['distance'] = pd.to_numeric(row_data.distance)
@@ -255,7 +255,7 @@ def recreate_trip(conn) -> None: #(TAbles) - GENERIC QUERY
 
 "============================================================================="
 
-def birth_certificate(conn) -> None:
+def birth_certificate(conn) -> None: #(Tables)
     cursor = conn.cursor()
     cursor.execute("rollback;")
     
@@ -277,6 +277,31 @@ def birth_certificate(conn) -> None:
     
     cursor.execute(birth_certificate_query)
     conn.commmit()
+    return None
+
+"============================================================================="
+
+def voronoi_data(conn) -> None: #(Tables)
+    cursor = conn.cursor()
+    cursor.execute("rollback;")
+    
+    voronoi_data_query = """
+         WITH voronoi AS(
+              SELECT (g.gdump).path, (g.gdump).geom
+                FROM (SELECT ST_DUMP(ST_VoronoiPolygons(ST_Collect(geometry::geometry))) AS gdump
+                        FROM station
+                       WHERE death IS NULL
+                      ) AS g
+        )
+        UPDATE station AS s
+           SET voronoi = v.geom
+          FROM voronoi AS v
+         WHERE ST_Contains(v.geom, s.geometry::geometry)
+               AND s.death IS NULL;
+        """
+    
+    cursor.execute(voronoi_data_query)
+    conn.commit()
     return None
 
 "============================================================================="
