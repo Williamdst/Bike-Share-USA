@@ -173,7 +173,7 @@ def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: boo
 
 "============================================================================="
 
-def VACUUM(conn): # GENERIC QUERY
+def VACUUM(conn): # (TAbles) GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute('rollback;')
     cursor.execute('VACUUM;')
@@ -199,7 +199,7 @@ def delete_duration_outliers(conn) -> None: #(Tables) GENERIC QUERY
 "============================================================================="
 
 
-def find_time_swaps(conn) -> pd.DataFrame(): # GENERIC QUERY
+def find_time_swaps(conn) -> pd.DataFrame(): # (Analyze) GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute('rollback;')
     
