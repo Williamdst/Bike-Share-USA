@@ -16,7 +16,6 @@ def execute_query(conn, query, cols_data=False, to_frame=False):
         data = cursor.fetchall()
         return (data, colnames)
     else:
-        conn.commit()
         return None
 
 "============================================================================="
