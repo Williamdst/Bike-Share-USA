@@ -21,110 +21,6 @@ def execute_query(conn, query, cols_data=False, to_frame=False):
 
 "============================================================================="
 
-def countYearlyTrips(conn) -> pd.DataFrame():   # Query-0001 (Analyze) - GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback")
-  
-    countTrips_query = """
-            SELECT EXTRACT(YEAR FROM starttime) as Year, Count(*) as Trips
-              FROM trip
-             GROUP BY Year
-             ORDER BY Year;
-            """
-    cursor.execute(countTrips_query)
-    
-    colnames = [desc[0] for desc in cursor.description]
-    data = cursor.fetchall()
-    
-    df = pd.DataFrame(data,columns=colnames)
-    return df
-
-"============================================================================="
-
-def countYearlyNJTrips(conn): # Query-0002 (Analyze) - GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback")
-   
-    countNJTrips_query = """
-            WITH nj_trips AS (
-                 SELECT *
-                 FROM trip as t
-                 WHERE startid NOT IN (
-                       SELECT stationid
-                         FROM station
-                        WHERE t.startid = stationid
-                        )
-                    OR endid NOT IN (
-                        SELECT stationid 
-                          FROM station
-                         WHERE t.endid = stationid
-                        )
-                )
-            
-            SELECT EXTRACT(YEAR FROM starttime) as Year, count(*) as Trips
-              FROM nj_trips
-             GROUP BY Year
-             ORDER BY Year;
-            """
-    cursor.execute(countNJTrips_query)
-    
-    colnames = [desc[0] for desc in cursor.description]
-    data = cursor.fetchall()
-    
-    df = pd.DataFrame(data, columns=colnames)
-    return df
-
-"============================================================================="
-
-def deleteNJTrips(conn) -> None: #(Tables) - GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback")
-
-    deleteNJTrips_query = """
-                DELETE FROM trip
-                WHERE startid NOT IN (
-                       SELECT stationid
-                         FROM station
-                        WHERE trip.startid = stationid
-                        )
-                    OR endid NOT IN (
-                        SELECT stationid 
-                          FROM station
-                         WHERE trip.endid = stationid
-                        )
-                """
-    
-    cursor.execute(deleteNJTrips_query)
-    conn.commit()
-    return None
-
-"============================================================================="
-
-def create_foreign_key(conn, fk_table, fk_col, ref_table, ref_col, fk_name=''): #(Tables)
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
-
-    fk_create_query = f"""
-            ALTER TABLE {fk_table}
-            ADD CONSTRAINT fk_{fk_col}_{ref_col}
-            FOREIGN KEY ({fk_col})
-            REFERENCES {ref_table}({ref_col});
-            """
-    
-    if fk_name:
-        fk_create_query = f"""
-                ALTER TABLE {fk_table}
-                ADD CONSTRAINT {fk_name}
-                FOREIGN KEY ({fk_col})
-                REFERENCES {ref_table}({ref_col});
-                """
-    
-    cursor.execute(fk_create_query)
-    conn.commit()    
-    return None
-
-"============================================================================="
-
 def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: bool=False) -> pd.DataFrame(): #Analyze
     """
     Randomly Samples 1% of data (1M rows) shuffles it and then takes the first n 100K rows
@@ -182,7 +78,6 @@ def VACUUM(conn): # (TAbles) GENERIC QUERY
 
 "============================================================================="
 
-
 def delete_duration_outliers(conn) -> None: #(Tables) GENERIC QUERY
     cursor = conn.cursor()
     cursor.execute("rollback")
@@ -229,28 +124,6 @@ def delete_time_swaps(conn) -> None: #(Tables) GENERIC QUERY
     
     cursor.execute(delete_swap_query)
     conn.commit()    
-    return None
-
-"============================================================================="
-
-def recreate_trip(conn) -> None: #(TAbles) - GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback;")
-    
-    create_tripds_query = """
-                create table trip_ds as (
-                SELECT tp.*, 
-                       ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS NUMERIC),2) AS distance,
-                       ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 / (tp.tripduration/60) AS NUMERIC) , 2) AS speed
-                  FROM trip AS tp
-                       LEFT JOIN station AS s1
-                            ON tp.startid = s1.stationid
-                       LEFT JOIN station AS s2
-                            ON tp.endid = s2.stationid
-                );
-                """
-    cursor.execute(create_tripds_query)
-    conn.commmit()
     return None
 
 "============================================================================="
