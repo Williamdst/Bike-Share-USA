@@ -14,17 +14,17 @@ def execute_query(conn, query, cols_data=False, to_frame=False):
     elif cols_data:
         colnames = [desc[0] for desc in cursor.description]
         data = cursor.fetchall()
-        return (data, colnames)
+        return (colnames, data)
     else:
         return None
 
 "============================================================================="
 
-def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: bool=False) -> pd.DataFrame(): #Analyze
+def get_random_10k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #Analyze
     """
-    Randomly Samples 1% of data (1M rows) shuffles it and then takes the first n 100K rows
+    Randomly Samples 1% of the data shuffles it and then takes the first 10K rows. Does this process
+    for the number of shuffles passed. 
     """
-    # 10s * shuffles = time to execute
     
     cursor = conn.cursor()
     cursor.execute('rollback;')
@@ -32,105 +32,63 @@ def get_random_100k_rows(conn, shuffles: int=1, speed: bool=False, distance: boo
     get_row_query = ""
     row_data = pd.DataFrame()
     
-    if distance:
-        get_row_query = """
-                SELECT tp.*, round(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS numeric),2) AS distance
-                  FROM trip AS tp TABLESAMPLE SYSTEM(1) 
-                       LEFT JOIN station AS s1 
-                            ON tp.startid = s1.stationid
-                       LEFT JOIN station AS s2
-                            ON tp.endid = s2.stationid
-                 ORDER BY RANDOM()
-                 LIMIT 100000;
-                """
-    else:
-        get_row_query = """
-                SELECT * 
-                  FROM trip TABLESAMPLE SYSTEM(1) 
-                 ORDER BY RANDOM() LIMIT 100000;
-                """
+    get_row_query = f"""
+            SELECT * 
+            FROM trips.{table}_trip TABLESAMPLE SYSTEM(1) 
+            ORDER BY RANDOM() LIMIT 10000;
+            """
     
     for i in range(shuffles):
-        cursor.execute(get_row_query)
-        colnames = [desc[0] for desc in cursor.description]
-        data = cursor.fetchall()
+        colnames, data = execute_query(conn, get_row_query, cols_data = True)
         row_data = pd.concat([row_data, pd.DataFrame(data, columns=colnames)], ignore_index=True)
-    
-    row_data = row_data.astype({'startid':'int', 'endid':'int','usertype':'category','gender':'category'})
-    
-    if distance and speed:
-        row_data['distance'] = pd.to_numeric(row_data.distance)
-        row_data['MPH'] = row_data.distance / (row_data.tripduration / 60)
-    if distance:
-        row_data['distance'] = pd.to_numeric(row_data.distance)
-    
+        
     return row_data
 
 "============================================================================="
 
 def VACUUM(conn): # (TAbles) GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
-    cursor.execute('VACUUM;')
-    conn.commit()
+    execute_query(conn, 'VACUUM;')
     return None
 
 "============================================================================="
 
 def delete_duration_outliers(conn) -> None: #(Tables) GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback")
-
     delete_duration_query = """
-             DELETE FROM trip
-             WHERE tripduration > 96
-                """
+            DELETE FROM trip
+            WHERE tripduration > 96
+            """
     
-    cursor.execute(delete_duration_query)
-    conn.commit()    
+    execute_query(conn, delete_duration_query)
     return None
 
 "============================================================================="
 
 
-def find_time_swaps(conn) -> pd.DataFrame(): # (Analyze) GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
-    
+def find_time_swaps(conn) -> pd.DataFrame(): # (Analyze) GENERIC QUERY  
     find_swaps_query = """
                 SELECT * 
                   FROM trip 
                  WHERE starttime >= endtime;
-                """
-    cursor.execute(find_swaps_query)
-    colnames = [desc[0] for desc in cursor.description]
-    data = cursor.fetchall()
+                """    
     
-    df = pd.DataFrame(data, columns=colnames)
+    df = execute_query(conn, find_swaps_query, to_frame=True)
     return(df)
 
 "============================================================================="
 
 
 def delete_time_swaps(conn) -> None: #(Tables) GENERIC QUERY
-    cursor = conn.cursor()
-    cursor.execute("rollback;")
-
     delete_swap_query = """
              DELETE FROM trip
              WHERE starttime > endtime
                 """
-    
-    cursor.execute(delete_swap_query)
-    conn.commit()    
+
+    execute_query(conn, delete_swap_query)
     return None
 
 "============================================================================="
 
 def birth_certificate(conn) -> None: #(Tables)
-    cursor = conn.cursor()
-    cursor.execute("rollback;")
-    
     birth_certificate_query = """
                 WITH timestamps AS (
                     SELECT DISTINCT startid, 
@@ -145,18 +103,13 @@ def birth_certificate(conn) -> None: #(Tables)
                        death = ts.death
                   FROM timestamps AS ts
                  WHERE s.stationid = ts.startid;
-                """
-    
-    cursor.execute(birth_certificate_query)
-    conn.commmit()
+                """  
+    execute_query(conn, birth_certificate_query)
     return None
 
 "============================================================================="
 
 def voronoi_data(conn) -> None: #(Tables)
-    cursor = conn.cursor()
-    cursor.execute("rollback;")
-    
     voronoi_data_query = """
          WITH voronoi AS(
               SELECT (g.gdump).path, (g.gdump).geom
@@ -172,8 +125,7 @@ def voronoi_data(conn) -> None: #(Tables)
                AND s.death IS NULL;
         """
     
-    cursor.execute(voronoi_data_query)
-    conn.commit()
+    execute_query(conn, voronoi_data_query)
     return None
 
 "============================================================================="
