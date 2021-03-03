@@ -20,9 +20,9 @@ def execute_query(conn, query, cols_data=False, to_frame=False):
 
 "============================================================================="
 
-def get_random_10k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #Analyze
+def get_random_50k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #Analyze
     """
-    Randomly Samples 1% of the data shuffles it and then takes the first 10K rows. Does this process
+    Randomly Samples 1% of the data shuffles it and then takes the first 50K rows. Does this process
     for the number of shuffles passed. 
     """
     
@@ -35,7 +35,7 @@ def get_random_10k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #A
     get_row_query = f"""
             SELECT * 
             FROM trips.{table}_trip TABLESAMPLE SYSTEM(1) 
-            ORDER BY RANDOM() LIMIT 10000;
+            ORDER BY RANDOM() LIMIT 50000;
             """
     
     for i in range(shuffles):
