@@ -150,35 +150,6 @@ def delete_duration_outliers(conn, service: str, outlier: float) -> None: #(Tabl
 
 "============================================================================="
 
-
-def find_time_swaps(conn, service: str) -> pd.DataFrame(): # (Analyze) GENERIC QUERY  
-    """Finds the trips in the specificed service table that has time-swap errors
-    
-    Parameters
-    ----------
-    conn: psycopg2.extensions.connection
-        The connection to the database
-    service: str
-        The bike station service whose trips will be checked for time swaps
-    
-    Returns
-    -------
-    pd.DataFrame:
-        Returns, as a dataframe, the trips that have a time swap error     
-    """
-    
-    find_swaps_query = f"""
-                SELECT * 
-                  FROM trips.{serive}_trip 
-                 WHERE starttime >= endtime;
-                """    
-    
-    df = execute_query(conn, find_swaps_query, to_frame=True)
-    return(df)
-
-"============================================================================="
-
-
 def delete_time_swaps(conn, service: str) -> None: #(Tables) GENERIC QUERY
     """Delete the rows from the table that have time-swap errors
     
@@ -197,8 +168,8 @@ def delete_time_swaps(conn, service: str) -> None: #(Tables) GENERIC QUERY
     
     delete_swap_query = f"""
              DELETE FROM trips.{service}_trip
-             WHERE starttime > endtime
-                """
+             WHERE starttime >= endtime
+             """
 
     execute_query(conn, delete_swap_query)
     return None
