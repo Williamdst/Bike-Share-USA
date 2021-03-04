@@ -1,8 +1,9 @@
 import pandas as pd
+from math import ceil
 from typing import Union
 
-def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[None, tuple, pd.DataFrame()]:
-     """Uploads dataframe to the table in the database
+def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[None, tuple, pd.DataFrame]:
+    """Uploads dataframe to the table in the database
     
     Parameters
     ----------
@@ -22,7 +23,7 @@ def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[No
     tuple(2):
         colnames - The column names that were returned from the query
         data - The data that was returned from the query
-    pd.DataFrame():
+    pd.DataFrame:
         The results of the query stored as a dataframe
         
     """
@@ -45,7 +46,7 @@ def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[No
 
 "============================================================================="
 
-def get_random_100k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #Analyze
+def get_random_100k_rows(conn, service: str, samples) -> pd.DataFrame(): #Analyze
     """ Randomly Samples 1% of the data shuffles it and then takes the first 100K rows. Does this process
     for the number of shuffles passed. 
     
@@ -54,14 +55,14 @@ def get_random_100k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #
     ----------
     conn: psycopg2.extensions.connection
         The connection to the database
-    table: str
-        The table in the database trips schema to query from
+    service: str
+        The bike share service's table in the database trips schema to query from
     shuffles: int (default=1)
-        The number of times to shuffle the data and select 100,000 rows
+        The number of times to shuffle the data and select 20,000 rows (100K for citi)
     
     Returns
     -------
-    pd.DataFrame():
+    pd.DataFrame:
         The results of all the shuffles appended to each other as a dataframe
         
     """
@@ -69,20 +70,31 @@ def get_random_100k_rows(conn, table: str, shuffles: int=1) -> pd.DataFrame(): #
     cursor = conn.cursor()
     cursor.execute('rollback;')
     
-    get_row_query = ""
-    row_data = pd.DataFrame()
+    row_data = pd.DataFrame()  
+    shuffles = ceil(samples/20000)
     
     get_row_query = f"""
             SELECT * 
-            FROM trips.{table}_trip TABLESAMPLE SYSTEM(1) 
+            FROM trips.{service}_trip TABLESAMPLE SYSTEM(1) 
             ORDER BY RANDOM() 
-            LIMIT 100000;
+            LIMIT 20000;
             """
     
+    if service == 'citi':
+        get_row_query = f"""
+                SELECT * 
+                FROM trips.{service}_trip TABLESAMPLE SYSTEM(1) 
+                ORDER BY RANDOM() 
+                LIMIT 100000;
+                """ 
+        shuffles = ceil(samples/100000)
+  
+
     for i in range(shuffles):
         colnames, data = execute_query(conn, get_row_query, cols_data = True)
         row_data = pd.concat([row_data, pd.DataFrame(data, columns=colnames)], ignore_index=True)
-        
+    
+    row_data[['duration', 'distance', 'speed']] = row_data[['duration','distance','speed']].astype('float32')
     return row_data
 
 "============================================================================="
@@ -150,7 +162,7 @@ def find_time_swaps(conn, service: str) -> pd.DataFrame(): # (Analyze) GENERIC Q
     
     Returns
     -------
-    pd.DataFrame():
+    pd.DataFrame:
         Returns, as a dataframe, the trips that have a time swap error     
     """
     
