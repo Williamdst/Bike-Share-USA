@@ -207,7 +207,7 @@ def birth_certificate(conn, service) -> None: #(Tables)
                    SET birth = ts.birth,
                        death = ts.death
                   FROM timestamps AS ts
-                 WHERE s.stationid = ts.startid;
+                 WHERE s.stationid::numeric = ts.startid;
                 """  
     execute_query(conn, birth_certificate_query)
     return None
