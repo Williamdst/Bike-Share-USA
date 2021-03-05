@@ -119,7 +119,7 @@ def VACUUM_FULL(conn) -> None: # (TAbles) GENERIC QUERY
 
 "============================================================================="
 
-def delete_duration_outliers(conn, service: str, outlier: float) -> None: #(Tables) GENERIC QUERY
+def delete_duration_outliers(conn, service: str, outliers: tuple) -> None: #(Tables) GENERIC QUERY
     """Deletes outliers from trip tables
     
     Parameters
@@ -128,8 +128,9 @@ def delete_duration_outliers(conn, service: str, outlier: float) -> None: #(Tabl
         The connection to the database
     service: str
         The bike station service whose outlier trips are going to be deleted
-    outlier: float
-        The outlier/cut-off value for outliers
+    outlier: tuple(2)
+        lower_outlier - The value of the 2.5th quantile of the distribution
+        upper_outlier - The value of the 97.5th quantile of the distrubtion
     
     
     Returns
@@ -141,8 +142,8 @@ def delete_duration_outliers(conn, service: str, outlier: float) -> None: #(Tabl
     
     delete_duration_query = f"""
             DELETE FROM trips.{service}_trip
-            WHERE tripduration > {outlier}
-            AND tripduration < 0
+            WHERE duration < {outliers[0]}
+            OR duration > {outliers[1]}
             """
     
     execute_query(conn, delete_duration_query)
