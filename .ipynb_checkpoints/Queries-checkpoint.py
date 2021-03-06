@@ -250,3 +250,73 @@ def voronoi_data(conn, service) -> None: #(Tables)
     return None
 
 "============================================================================="
+
+def trip_from_staging(conn, service, id_type = 'NUMERIC'):
+    cursor = conn.cursor()
+    cursor.execute('rollback;')
+    
+    trip_from_staging_query = f"""
+            CREATE TABLE trips.{service}_trip as (
+                SELECT 
+                *, 
+                CASE WHEN 
+                     duration > 0 
+                   THEN ROUND(distance/(duration / 60), 2) 
+                END AS speed
+                FROM (
+                    SELECT 
+                      starttime, 
+                      endtime, 
+                      ROUND((EXTRACT(epoch FROM (endtime - starttime))/60)::NUMERIC, 2) AS duration, 
+                      startid, 
+                      startname, 
+                      endid, 
+                      endname,
+                      CASE WHEN 
+                            s1.latitude > 0 AND s2.latitude > 0 
+                           THEN ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS NUMERIC),2)
+                      END AS distance
+                    FROM staging.{service}_trip AS {service}
+                    LEFT JOIN stations.{service}_station AS s1
+                      ON {service}.startid = s1.stationid::NUMERIC
+                    LEFT JOIN stations.{service}_station AS s2
+                      ON {service}.endid = s2.stationid::NUMERIC
+                ) AS {service}_table
+            );
+            """
+    
+    if id_type == 'VARCHAR':
+        trip_from_staging_query = f"""
+                CREATE TABLE trips.{service}_trip AS (
+                    SELECT 
+                      *, 
+                      CASE WHEN 
+                             duration > 0 
+                           THEN ROUND(distance/(duration / 60), 2) 
+                      END AS speed
+                    FROM (
+                        SELECT 
+                          {service}.starttime, 
+                          {service}.endtime, 
+                          ROUND((EXTRACT(epoch FROM (endtime - starttime))/60)::NUMERIC, 2) AS duration, 
+                          replace({service}.startid, '.0','') as startid,
+                          startname, 
+                          replace({service}.endid, '.0','') as endid, 
+                          endname,
+                          CASE WHEN 
+                                s1.latitude > 0 AND s2.latitude > 0
+                               THEN ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS NUMERIC),2)
+                          END AS distance
+                        FROM staging.{service}_trip AS {service}
+                        LEFT JOIN stations.{service}_station AS s1
+                          ON replace({service}.startid,'.0','') = s1.stationid
+                        LEFT JOIN stations.{service}_station AS s2
+                          ON replace({service}.endid, '.0','') = s2.stationid
+                    ) AS {service}_table 
+                );
+                """
+    
+    cursor.execute(trip_from_staging_query)
+    conn.commit()
+    
+    return None
