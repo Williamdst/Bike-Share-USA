@@ -177,7 +177,7 @@ def delete_time_swaps(conn, service: str) -> None: #(Tables) GENERIC QUERY
 
 "============================================================================="
 
-def birth_certificate(conn, service) -> None: #(Tables)
+def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
     """Adds a birth and death column to the station table of the service indicating
     the first day that a station appeared in the system and the last day it appeared in the systme
     
@@ -210,6 +210,24 @@ def birth_certificate(conn, service) -> None: #(Tables)
                   FROM timestamps AS ts
                  WHERE s.stationid::numeric = ts.startid;
                 """  
+    
+    if id_type == 'VARCHAR':
+        birth_certificate_query = f"""
+                WITH timestamps AS (
+                    SELECT DISTINCT startid, 
+                                    MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
+                                    MAX(DATE_TRUNC('day',starttime)::date) over w AS death
+                      FROM trips.{service}_trip
+                    WINDOW w as (PARTITION BY REPLACE(startid, '.0', ''))
+                )
+            
+                UPDATE stations.{service}_station AS s
+                   SET birth = ts.birth,
+                       death = ts.death
+                  FROM timestamps AS ts
+                 WHERE s.stationid = ts.startid;
+                """
+        
     execute_query(conn, birth_certificate_query)
     return None
 
