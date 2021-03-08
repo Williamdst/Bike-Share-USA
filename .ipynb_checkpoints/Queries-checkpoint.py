@@ -151,32 +151,6 @@ def delete_duration_outliers(conn, service: str, outliers: tuple) -> None: #(Tab
 
 "============================================================================="
 
-def delete_time_swaps(conn, service: str) -> None: #(Tables) GENERIC QUERY
-    """Delete the rows from the table that have time-swap errors
-    
-    Parameters
-    ----------
-    conn: psycopg2.extensions.connection
-        The connection to the database
-    service: str
-        The bike station service whose time swap error trips will be removed
-    
-    Returns
-    -------
-    None:
-        Executes the query   
-    """
-    
-    delete_swap_query = f"""
-             DELETE FROM trips.{service}_trip
-             WHERE starttime >= endtime
-             """
-
-    execute_query(conn, delete_swap_query)
-    return None
-
-"============================================================================="
-
 def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
     """Adds a birth and death column to the station table of the service indicating
     the first day that a station appeared in the system and the last day it appeared in the systme
