@@ -1,6 +1,8 @@
 import pandas as pd
 from math import ceil
 from typing import Union
+from io import StringIO
+
 
 def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[None, tuple, pd.DataFrame]:
     """Uploads dataframe to the table in the database
@@ -328,3 +330,37 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
     conn.commit()
     
     return None
+
+"============================================================================="
+
+def upload_data(conn, data, table: str, sep = ','):
+    """Uploads dataframe to the table in the database
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    data: pandas.DataFrame
+        The dataframe to be uploaded
+    table: str
+        The name of the table where the data will be stored
+    sep: str
+        The seperator to use when saving the dataframe to a csv
+    
+    Returns
+    -------
+    None:
+        If executed properly the data should be in specified table of the database
+    """
+    
+    cursor = conn.cursor()
+    datastream = StringIO()
+    
+    data.to_csv(datastream, sep=sep, index=False, header=False)
+    datastream.seek(0)
+    
+    cursor.execute('rollback;')
+    cursor.copy_from(datastream, table, sep=sep)
+    conn.commit()
+    
+    return None    
