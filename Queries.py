@@ -207,38 +207,54 @@ def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
 
 "============================================================================="
 
-def voronoi_data(conn, service) -> None: #(Tables)
+def voronoi_data(conn) -> None: #(Tables)
     """Delete the rows from the table that have time-swap errors
     
     Parameters
     ----------
     conn: psycopg2.extensions.connection
         The connection to the database
-    service: str
-        The bike station service whose stations will be given a voronoi polygon
-    
+        
     Returns
     -------
     None:
         Executes the query to find the voronoi polygons for each station   
     """
 
-    voronoi_data_query = f"""
+    voronoi_data_query_citi = f"""
          WITH voronoi AS(
               SELECT (g.gdump).path, (g.gdump).geom
                 FROM (SELECT ST_DUMP(ST_VoronoiPolygons(ST_Collect(geometry::geometry))) AS gdump
-                        FROM stations.{service}_station
+                        FROM stations.citi_station
                        WHERE death IS NULL
                       ) AS g
         )
-        UPDATE stations.{service}_station AS s
+        UPDATE stations.citi_station AS s
            SET voronoi = v.geom
           FROM voronoi AS v
          WHERE ST_Contains(v.geom, s.geometry::geometry)
                AND s.death IS NULL;
         """
     
-    execute_query(conn, voronoi_data_query)
+    voronoi_data_query_bay = f"""
+         WITH voronoi AS(
+              SELECT (g.gdump).path, (g.gdump).geom
+                FROM (SELECT ST_DUMP(ST_VoronoiPolygons(ST_Collect(geometry::geometry))) AS gdump
+                        FROM stations.bay_station
+                       WHERE death IS NULL
+                         AND stationid like 'SF%'
+                      ) AS g
+        )
+        UPDATE stations.bay_station AS s
+           SET voronoi = v.geom
+          FROM voronoi AS v
+         WHERE ST_Contains(v.geom, s.geometry::geometry)
+               AND s.death IS NULL
+               AND s.stationid like 'SF%';
+        """
+    
+    execute_query(conn, voronoi_data_query_citi)
+    execute_query(conn, voronoi_data_query_bay)
     return None
 
 "============================================================================="
