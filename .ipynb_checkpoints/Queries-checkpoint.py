@@ -209,6 +209,39 @@ def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
 
 "============================================================================="
 
+def station_growth(conn, service: str):
+    
+    station_growth_query = f"""
+            SELECT
+              year,
+              ({service}_births - (CASE WHEN {service}_deaths IS NULL 
+                                     THEN 0 
+                                     ELSE {service}_deaths 
+                                 END)) AS {service}_added,
+              SUM(({service}_births - (CASE WHEN {service}_deaths IS NULL 
+                                     THEN 0 
+                                     ELSE {service}_deaths 
+                                     END))) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS {service}_total
+            FROM 
+                (SELECT 
+                   DATE_TRUNC('year', birth) AS year,
+                   count(birth) AS {service}_births
+                 FROM stations.{service}_station
+                 GROUP BY year
+                 ORDER BY year) AS births
+            FULL JOIN
+                (SELECT 
+                  DATE_TRUNC('year', death) AS year,
+                  count(death) AS {service}_deaths
+                 FROM stations.{service}_station
+                 GROUP BY year
+                 ORDER BY year) AS deaths
+              USING (year)
+            WHERE year IS NOT NULL;
+            """
+    
+"============================================================================="
+
 def voronoi_data(conn) -> None: #(Tables)
     """Delete the rows from the table that have time-swap errors
     
