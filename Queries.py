@@ -399,3 +399,44 @@ def upload_data(conn, data, table: str, sep = ','):
     conn.commit()
     
     return None    
+
+"============================================================================="
+
+def n_popular_stations(conn, service, n=5, ranking = 'total'):
+    
+    if ranking == 'total':
+        ranking = 'startpoints.startpoints + endpoints.endpoints'
+    elif ranking == 'start':
+        ranking = 'startpoints.startpoints'
+    elif ranking == 'end':
+        ranking = 'endpoints.endpoints'
+    else:
+        raise ValueError("Acceptable inputs for rankings are 'total', 'start', 'end'")
+    
+    ranking_query = f"""
+            SELECT 
+              startpoints.year,
+              startid AS stationid,
+              startpoints.startpoints,
+              endpoints.endpoints,
+              startpoints.startpoints + endpoints.endpoints as total_points,
+              RANK() OVER(PARTITION BY startpoints.year ORDER BY {ranking} DESC) AS ranking
+            FROM (
+                SELECT 
+                   DATE_TRUNC('year', starttime) AS year,
+                   startid,
+                   COUNT(*) AS startpoints
+                FROM trips.bay_trip
+                GROUP BY year, startid) AS startpoints
+            FULL JOIN (
+                SELECT 
+                   DATE_TRUNC('year', starttime) AS year,
+                   endid,
+                   COUNT(*) AS endpoints
+                FROM trips.bay_trip
+                GROUP BY year, endid ) AS endpoints
+              ON startpoints.year = endpoints.year
+             AND startpoints.startid = endpoints.endid;
+            """
+    df = execute_query(conn, ranking_query, to_frame=True)
+    return df
