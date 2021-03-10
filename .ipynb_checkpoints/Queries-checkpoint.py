@@ -240,6 +240,8 @@ def station_growth(conn, service: str):
             WHERE year IS NOT NULL;
             """
     
+    df = execute_query(conn, station_growth_query, to_frame=True)
+    return df
 "============================================================================="
 
 def voronoi_data(conn) -> None: #(Tables)
