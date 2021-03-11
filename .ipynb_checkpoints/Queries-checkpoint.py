@@ -414,29 +414,41 @@ def n_popular_stations(conn, service, n=5, ranking = 'total'):
         raise ValueError("Acceptable inputs for rankings are 'total', 'start', 'end'")
     
     ranking_query = f"""
-            SELECT 
-              startpoints.year,
-              startid AS stationid,
-              startpoints.startpoints,
-              endpoints.endpoints,
-              startpoints.startpoints + endpoints.endpoints as total_points,
-              RANK() OVER(PARTITION BY startpoints.year ORDER BY {ranking} DESC) AS ranking
-            FROM (
-                SELECT 
-                   DATE_TRUNC('year', starttime) AS year,
-                   startid,
-                   COUNT(*) AS startpoints
-                FROM trips.bay_trip
-                GROUP BY year, startid) AS startpoints
-            FULL JOIN (
-                SELECT 
-                   DATE_TRUNC('year', starttime) AS year,
-                   endid,
-                   COUNT(*) AS endpoints
-                FROM trips.bay_trip
-                GROUP BY year, endid ) AS endpoints
-              ON startpoints.year = endpoints.year
-             AND startpoints.startid = endpoints.endid;
-            """
+            WITH yearly_rankings AS(
+                        SELECT 
+                          startpoints.year,
+                          startid AS stationid,
+                          startname AS station,
+                          startpoints.startpoints,
+                          endpoints.endpoints,
+                          startpoints.startpoints + endpoints.endpoints as total_points,
+                          RANK() OVER(PARTITION BY startpoints.year ORDER BY {ranking} DESC) AS ranking,
+                          '{service}' AS service
+                        FROM (
+                            SELECT 
+                               DATE_TRUNC('year', starttime) AS year,
+                               startid,
+                               startname,
+                               COUNT(*) AS startpoints
+                            FROM trips.{service}_trip
+                            GROUP BY year, startid, startname) AS startpoints
+                        FULL JOIN (
+                            SELECT 
+                               DATE_TRUNC('year', starttime) AS year,
+                               endid,
+                               endname,
+                               COUNT(*) AS endpoints
+                            FROM trips.{service}_trip
+                            GROUP BY year, endid, endname) AS endpoints
+                          ON startpoints.year = endpoints.year
+                         AND startpoints.startid = endpoints.endid
+                         AND startpoints.startname = endpoints.endname
+                        WHERE {ranking} IS NOT NULL
+                )
+                SELECT * 
+                FROM yearly_rankings
+                WHERE ranking <= {n}
+                  AND year IS NOT null
+                """
     df = execute_query(conn, ranking_query, to_frame=True)
     return df
