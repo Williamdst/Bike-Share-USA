@@ -145,7 +145,7 @@ def delete_duration_outliers(conn, service: str, outliers: tuple) -> None: #(Tab
     delete_duration_query = f"""
             DELETE FROM trips.{service}_trip
             WHERE duration < {outliers[0]}
-            OR duration > {outliers[1]}
+              OR duration > {outliers[1]}
             """
     
     execute_query(conn, delete_duration_query)
@@ -173,35 +173,41 @@ def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
     
     birth_certificate_query = f"""
                 WITH timestamps AS (
-                    SELECT DISTINCT startid, 
-                                    MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
-                                    MAX(DATE_TRUNC('day',starttime)::date) over w AS death
-                      FROM trips.{service}_trip
+                    SELECT DISTINCT 
+                      startid, 
+                      MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
+                      MAX(DATE_TRUNC('day',starttime)::date) over w AS death
+                    FROM trips.{service}_trip
                     WINDOW w as (PARTITION BY startid)
                 )
             
                 UPDATE stations.{service}_station AS s
-                   SET birth = ts.birth,
-                       death = ts.death
-                  FROM timestamps AS ts
-                 WHERE s.stationid::numeric = ts.startid;
+                SET 
+                  birth = ts.birth,
+                  death = ts.death
+                FROM timestamps AS ts
+                WHERE 
+                  s.stationid::numeric = ts.startid;
                 """  
     
     if id_type == 'VARCHAR':
         birth_certificate_query = f"""
                 WITH timestamps AS (
-                    SELECT DISTINCT startid, 
-                                    MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
-                                    MAX(DATE_TRUNC('day',starttime)::date) over w AS death
-                      FROM trips.{service}_trip
+                    SELECT DISTINCT 
+                      startid, 
+                      MIN(DATE_TRUNC('day',starttime)::date) over w AS birth, 
+                      MAX(DATE_TRUNC('day',starttime)::date) over w AS death
+                    FROM trips.{service}_trip
                     WINDOW w as (PARTITION BY REPLACE(startid, '.0', ''))
                 )
             
                 UPDATE stations.{service}_station AS s
-                   SET birth = ts.birth,
-                       death = ts.death
-                  FROM timestamps AS ts
-                 WHERE s.stationid = ts.startid;
+                SET 
+                  birth = ts.birth,
+                  death = ts.death
+                FROM timestamps AS ts
+                WHERE 
+                   s.stationid = ts.startid;
                 """
         
     execute_query(conn, birth_certificate_query)
@@ -215,13 +221,13 @@ def station_growth(conn, service: str):
             SELECT
               year,
               ({service}_births - (CASE WHEN {service}_deaths IS NULL 
-                                     THEN 0 
-                                     ELSE {service}_deaths 
-                                 END)) AS {service}_added,
+                                        THEN 0 
+                                        ELSE {service}_deaths 
+                                   END)) AS {service}_added,
               SUM(({service}_births - (CASE WHEN {service}_deaths IS NULL 
-                                     THEN 0 
-                                     ELSE {service}_deaths 
-                                     END))) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS {service}_total
+                                            THEN 0 
+                                            ELSE {service}_deaths 
+                                       END))) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS {service}_total
             FROM 
                 (SELECT 
                    DATE_TRUNC('year', birth) AS year,
@@ -260,17 +266,22 @@ def voronoi_data(conn) -> None: #(Tables)
 
     voronoi_data_query_citi = f"""
          WITH voronoi AS(
-              SELECT (g.gdump).path, (g.gdump).geom
-                FROM (SELECT ST_DUMP(ST_VoronoiPolygons(ST_Collect(geometry::geometry))) AS gdump
-                        FROM stations.citi_station
-                       WHERE death IS NULL
-                      ) AS g
+              SELECT 
+                (g.gdump).path, 
+                (g.gdump).geom
+              FROM (
+                    SELECT 
+                      ST_DUMP(ST_VoronoiPolygons(ST_Collect(geometry::geometry))) AS gdump
+                    FROM stations.citi_station
+                    WHERE death IS NULL
+                   ) AS g
         )
         UPDATE stations.citi_station AS s
-           SET voronoi = v.geom
-          FROM voronoi AS v
-         WHERE ST_Contains(v.geom, s.geometry::geometry)
-               AND s.death IS NULL;
+        SET 
+          voronoi = v.geom
+        FROM voronoi AS v
+        WHERE ST_Contains(v.geom, s.geometry::geometry)
+          AND s.death IS NULL;
         """
     
     voronoi_data_query_bay = f"""
@@ -303,11 +314,11 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
     trip_from_staging_query = f"""
             CREATE TABLE trips.{service}_trip as (
                 SELECT 
-                *, 
-                CASE WHEN 
-                     duration > 0 
-                   THEN ROUND(distance/(duration / 60), 2) 
-                END AS speed
+                  *, 
+                  CASE WHEN 
+                         duration > 0 
+                       THEN ROUND(distance/(duration / 60), 2) 
+                  END AS speed
                 FROM (
                     SELECT 
                       starttime, 
@@ -318,7 +329,7 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
                       endid, 
                       endname,
                       CASE WHEN 
-                            s1.latitude > 0 AND s2.latitude > 0 
+                             s1.latitude > 0 AND s2.latitude > 0 
                            THEN ROUND(CAST(ST_Distance(s1.geometry, s2.geometry)*0.000621371 AS NUMERIC),2)
                       END AS distance
                     FROM staging.{service}_trip AS {service}
