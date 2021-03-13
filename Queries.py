@@ -48,6 +48,40 @@ def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[No
 
 "============================================================================="
 
+def upload_data(conn, data, table: str, sep = ','):
+    """Uploads dataframe to the table in the database
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    data: pandas.DataFrame
+        The dataframe to be uploaded
+    table: str
+        The name of the table where the data will be stored
+    sep: str
+        The seperator to use when saving the dataframe to a csv
+    
+    Returns
+    -------
+    None:
+        If executed properly the data should be in specified table of the database
+    """
+    
+    cursor = conn.cursor()
+    datastream = StringIO()
+    
+    data.to_csv(datastream, sep=sep, index=False, header=False)
+    datastream.seek(0)
+    
+    cursor.execute('rollback;')
+    cursor.copy_from(datastream, table, sep=sep)
+    conn.commit()
+    
+    return None  
+
+"============================================================================="
+
 def get_random_rows(conn, service: str, samples) -> pd.DataFrame(): #Analyze
     """ Randomly Samples 1% of the data shuffles it and then takes the first 100K rows. Does this process
     for the number of shuffles passed. 
@@ -215,7 +249,7 @@ def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
 
 "============================================================================="
 
-def station_growth(conn, service: str):
+def station_growth(conn, service: str):  #Analysis
     
     station_growth_query = f"""
             SELECT
@@ -379,40 +413,6 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
 
 "============================================================================="
 
-def upload_data(conn, data, table: str, sep = ','):
-    """Uploads dataframe to the table in the database
-    
-    Parameters
-    ----------
-    conn: psycopg2.extensions.connection
-        The connection to the database
-    data: pandas.DataFrame
-        The dataframe to be uploaded
-    table: str
-        The name of the table where the data will be stored
-    sep: str
-        The seperator to use when saving the dataframe to a csv
-    
-    Returns
-    -------
-    None:
-        If executed properly the data should be in specified table of the database
-    """
-    
-    cursor = conn.cursor()
-    datastream = StringIO()
-    
-    data.to_csv(datastream, sep=sep, index=False, header=False)
-    datastream.seek(0)
-    
-    cursor.execute('rollback;')
-    cursor.copy_from(datastream, table, sep=sep)
-    conn.commit()
-    
-    return None    
-
-"============================================================================="
-
 def n_popular_stations(conn, service, n=5, ranking = 'total'):
     
     if ranking == 'total':
@@ -466,13 +466,17 @@ def n_popular_stations(conn, service, n=5, ranking = 'total'):
 
 "============================================================================="
 
-def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'):
+def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis
     cursor = conn.cursor()
     cursor.execute('rollback;')
     
+    
+    if id_type.upper() not in ['NUMERIC','VARCHAR']:
+        raise ValueError('Argument invalid, only NUMERIC and VARCHAR aceptable')
+        
     inter_zipcode_query = f"""
             SELECT 
-              date_trunc('year', starttime) AS year,
+              DATE_TRUNC('year', starttime) AS year,
               SUM(CASE WHEN s1.zipcode != s2.zipcode THEN 1 ELSE 0 END) * 100 / COUNT(*) AS percent_inter_travel,
               '{service}' as service
             FROM trips.{service}_trip AS trips
