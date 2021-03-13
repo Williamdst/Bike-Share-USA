@@ -463,3 +463,25 @@ def n_popular_stations(conn, service, n=5, ranking = 'total'):
                 """
     df = execute_query(conn, ranking_query, to_frame=True)
     return df
+
+"============================================================================="
+
+def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'):
+    cursor = conn.cursor()
+    cursor.execute('rollback;')
+    
+    inter_zipcode_query = f"""
+            SELECT 
+              date_trunc('year', starttime) AS year,
+              SUM(CASE WHEN s1.zipcode != s2.zipcode THEN 1 ELSE 0 END) * 100 / COUNT(*) AS percent_inter_travel,
+              '{service}' as service
+            FROM trips.{service}_trip AS trips
+            LEFT JOIN stations.{service}_station AS s1
+              ON trips.startid = s1.stationid::{id_type}
+            LEFT JOIN stations.{service}_station AS s2
+              ON trips.endid = s2.stationid::{id_type}
+            GROUP BY year;
+            """
+    
+    df = execute_query(conn, inter_zipcode_query, to_frame=True)
+    return df
