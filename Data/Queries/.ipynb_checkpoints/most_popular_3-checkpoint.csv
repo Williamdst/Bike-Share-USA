@@ -1,0 +1,112 @@
+year,stationid,station,startpoints,endpoints,total_points,ranking,service
+2017-01-01,15,San Francisco Ferry Building (Harry Bridges Plaza),15187,17109,32296,1,bay
+2017-01-01,6,The Embarcadero at Sansome St,13664,16531,30195,2,bay
+2017-01-01,30,San Francisco Caltrain (Townsend St at 4th St),12546,17378,29924,3,bay
+2018-01-01,67,San Francisco Caltrain Station 2  (Townsend St at 4th St),37616,50000,87616,1,bay
+2018-01-01,15,San Francisco Ferry Building (Harry Bridges Plaza),38461,44113,82574,2,bay
+2018-01-01,30,San Francisco Caltrain (Townsend St at 4th St),35092,42970,78062,3,bay
+2019-01-01,,,80121,82339,162460,1,bay
+2019-01-01,30,San Francisco Caltrain (Townsend St at 4th St),40302,50943,91245,2,bay
+2019-01-01,58,Market St at 10th St,45057,44284,89341,3,bay
+2020-01-01,,,874394,898057,1772451,1,bay
+2020-01-01,SF-J23-1,Market St at 10th St,12962,12824,25786,2,bay
+2020-01-01,30,San Francisco Caltrain (Townsend St at 4th St),7364,13580,20944,3,bay
+2015-01-01,22,South Station - 700 Atlantic Ave.,30798,31284,62082,1,blue
+2015-01-01,67,MIT at Mass Ave / Amherst St,29597,29904,59501,2,blue
+2015-01-01,74,Harvard Square at Mass Ave/ Dunster,22679,23588,46267,3,blue
+2016-01-01,67,MIT at Mass Ave / Amherst St,35654,36107,71761,1,blue
+2016-01-01,22,South Station - 700 Atlantic Ave.,30116,30321,60437,2,blue
+2016-01-01,80,MIT Stata Center at Vassar St / Main St,21185,29632,50817,3,blue
+2017-01-01,67,MIT at Mass Ave / Amherst St,42319,42442,84761,1,blue
+2017-01-01,80,MIT Stata Center at Vassar St / Main St,24532,33517,58049,2,blue
+2017-01-01,22,South Station - 700 Atlantic Ave,27682,26794,54476,3,blue
+2018-01-01,67,MIT at Mass Ave / Amherst St,53846,49635,103481,1,blue
+2018-01-01,80,MIT Stata Center at Vassar St / Main St,41559,46369,87928,2,blue
+2018-01-01,68,Central Square at Mass Ave / Essex St,37346,37270,74616,3,blue
+2019-01-01,67,MIT at Mass Ave / Amherst St,61055,56986,118041,1,blue
+2019-01-01,68,Central Square at Mass Ave / Essex St,50997,51442,102439,2,blue
+2019-01-01,80,MIT Stata Center at Vassar St / Main St,47196,41828,89024,3,blue
+2020-01-01,68,Central Square at Mass Ave / Essex St,34220,35158,69378,1,blue
+2020-01-01,60,Charles Circle - Charles St at Cambridge St,33094,33450,66544,2,blue
+2020-01-01,67,MIT at Mass Ave / Amherst St,29301,27574,56875,3,blue
+2010-01-01,31200,Massachusetts Ave & Dupont Circle NW,5093,5603,10696,1,capital
+2010-01-01,31201,15th & P St NW,3749,4047,7796,2,capital
+2010-01-01,31104,Adams Mill & Columbia Rd NW,4160,3535,7695,3,capital
+2011-01-01,31200,Massachusetts Ave & Dupont Circle NW,49092,53908,103000,1,capital
+2011-01-01,31201,15th & P St NW,32884,36638,69522,2,capital
+2011-01-01,31623,Columbus Circle / Union Station,32057,32252,64309,3,capital
+2012-01-01,31200,Massachusetts Ave & Dupont Circle NW,58069,64797,122866,1,capital
+2012-01-01,31623,Columbus Circle / Union Station,45692,47429,93121,2,capital
+2012-01-01,31201,15th & P St NW,40823,46818,87641,3,capital
+2013-01-01,31200,Massachusetts Ave & Dupont Circle NW,64875,72859,137734,1,capital
+2013-01-01,31623,Columbus Circle / Union Station,58727,60107,118834,2,capital
+2013-01-01,31201,15th & P St NW,45584,50659,96243,3,capital
+2014-01-01,31623,Columbus Circle / Union Station,65507,65067,130574,1,capital
+2014-01-01,31200,Massachusetts Ave & Dupont Circle NW,60764,69538,130302,2,capital
+2014-01-01,31258,Lincoln Memorial,57170,56206,113376,3,capital
+2015-01-01,31623,Columbus Circle / Union Station,70483,72611,143094,1,capital
+2015-01-01,31258,Lincoln Memorial,69609,69417,139026,2,capital
+2015-01-01,31200,Massachusetts Ave & Dupont Circle NW,55834,64155,119989,3,capital
+2016-01-01,31623,Columbus Circle / Union Station,68350,71849,140199,1,capital
+2016-01-01,31258,Lincoln Memorial,60196,60465,120661,2,capital
+2016-01-01,31247,Jefferson Dr & 14th St SW,55782,57617,113399,3,capital
+2017-01-01,31623,Columbus Circle / Union Station,70062,73569,143631,1,capital
+2017-01-01,31258,Lincoln Memorial,65884,66489,132373,2,capital
+2017-01-01,31247,Jefferson Dr & 14th St SW,59259,61135,120394,3,capital
+2018-01-01,31623,Columbus Circle / Union Station,63493,68100,131593,1,capital
+2018-01-01,31258,Lincoln Memorial,53869,54397,108266,2,capital
+2018-01-01,31247,Jefferson Dr & 14th St SW,43993,45473,89466,3,capital
+2019-01-01,31623,Columbus Circle / Union Station,58533,62977,121510,1,capital
+2019-01-01,31201,15th & P St NW,35382,38456,73838,2,capital
+2019-01-01,31258,Lincoln Memorial,35268,35026,70294,3,capital
+2020-01-01,-1.0,,84544,97099,181643,1,capital
+2020-01-01,31258,Lincoln Memorial,23911,21905,45816,2,capital
+2020-01-01,31201.0,15th & P St NW,21568,24067,45635,3,capital
+2013-01-01,497,E 17 St & Broadway,55371,59570,114941,1,citi
+2013-01-01,459,W 20 St & 11 Ave,51783,51874,103657,2,citi
+2013-01-01,293,Lafayette St & E 8 St,51166,50346,101512,3,citi
+2014-01-01,521,8 Ave & W 31 St,100498,81367,181865,1,citi
+2014-01-01,293,Lafayette St & E 8 St,86692,84029,170721,2,citi
+2014-01-01,497,E 17 St & Broadway,80166,85494,165660,3,citi
+2015-01-01,519,Pershing Square North,104813,95782,200595,1,citi
+2015-01-01,293,Lafayette St & E 8 St,95887,96341,192228,2,citi
+2015-01-01,521,8 Ave & W 31 St,100796,83286,184082,3,citi
+2016-01-01,519,Pershing Square North,150522,147060,297582,1,citi
+2016-01-01,435,W 21 St & 6 Ave,100721,101785,202506,2,citi
+2016-01-01,402,Broadway & E 22 St,97351,104888,202239,3,citi
+2017-01-01,519,Pershing Square North,162715,160387,323102,1,citi
+2017-01-01,497,E 17 St & Broadway,112218,117318,229536,2,citi
+2017-01-01,402,Broadway & E 22 St,108589,116509,225098,3,citi
+2018-01-01,519,Pershing Square North,150257,149932,300189,1,citi
+2018-01-01,497,E 17 St & Broadway,108883,113336,222219,2,citi
+2018-01-01,435,W 21 St & 6 Ave,107165,108636,215801,3,citi
+2019-01-01,519,Pershing Square North,156575,155536,312111,1,citi
+2019-01-01,497,E 17 St & Broadway,121781,125466,247247,2,citi
+2019-01-01,3255,8 Ave & W 31 St,119958,121631,241589,3,citi
+2020-01-01,426,West St & Chambers St,99364,101767,201131,1,citi
+2020-01-01,3141,1 Ave & E 68 St,100753,100260,201013,2,citi
+2020-01-01,435,W 21 St & 6 Ave,99191,100313,199504,3,citi
+2013-01-01,90,Millennium Park,17272,18395,35667,1,divvy
+2013-01-01,35,Streeter Dr & Illinois St,16710,18544,35254,2,divvy
+2013-01-01,76,Lake Shore Dr & Monroe St,15673,15457,31130,3,divvy
+2014-01-01,35,Streeter Dr & Illinois St,54214,67048,121262,1,divvy
+2014-01-01,76,Lake Shore Dr & Monroe St,41326,42060,83386,2,divvy
+2014-01-01,177,Theater on the Lake,38667,41297,79964,3,divvy
+2015-01-01,35,Streeter Dr & Illinois St,66759,78509,145268,1,divvy
+2015-01-01,76,Lake Shore Dr & Monroe St,48768,46807,95575,2,divvy
+2015-01-01,177,Theater on the Lake,42683,45104,87787,3,divvy
+2016-01-01,35,Streeter Dr & Grand Ave,90042,99495,189537,1,divvy
+2016-01-01,76,Lake Shore Dr & Monroe St,51090,48583,99673,2,divvy
+2016-01-01,177,Theater on the Lake,47927,51281,99208,3,divvy
+2017-01-01,35,Streeter Dr & Grand Ave,97571,106023,203594,1,divvy
+2017-01-01,192,Canal St & Adams St,50911,52608,103519,2,divvy
+2017-01-01,76,Lake Shore Dr & Monroe St,53400,50107,103507,3,divvy
+2018-01-01,35,Streeter Dr & Grand Ave,66944,78221,145165,1,divvy
+2018-01-01,192,Canal St & Adams St,62654,59179,121833,2,divvy
+2018-01-01,77,Clinton St & Madison St,51692,50068,101760,3,divvy
+2019-01-01,35,Streeter Dr & Grand Ave,67983,81723,149706,1,divvy
+2019-01-01,192,Canal St & Adams St,54389,50127,104516,2,divvy
+2019-01-01,91,Clinton St & Washington Blvd,48153,50686,98839,3,divvy
+2020-01-01,-1,,94607,110714,205321,1,divvy
+2020-01-01,35,Streeter Dr & Grand Ave,34783,37207,71990,2,divvy
+2020-01-01,176,Clark St & Elm St,30522,30527,61049,3,divvy
