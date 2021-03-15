@@ -102,9 +102,6 @@ def get_random_rows(conn, service: str, samples) -> pd.DataFrame(): #Analyze
         The results of all the shuffles appended to each other as a dataframe
         
     """
-        
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
     
     row_data = pd.DataFrame()  
     shuffles = ceil(samples/20000)
@@ -342,8 +339,6 @@ def voronoi_data(conn) -> None: #(Tables)
 "============================================================================="
 
 def trip_from_staging(conn, service, id_type = 'NUMERIC'):
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
     
     trip_from_staging_query = f"""
             CREATE TABLE trips.{service}_trip as (
@@ -405,10 +400,8 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
                     ) AS {service}_table 
                 );
                 """
-    
-    cursor.execute(trip_from_staging_query)
-    conn.commit()
-    
+
+    execute_query(conn, trip_from_staging_query)
     return None
 
 "============================================================================="
@@ -466,10 +459,7 @@ def n_popular_stations(conn, service, n=5, ranking = 'total'):
 
 "============================================================================="
 
-def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis
-    cursor = conn.cursor()
-    cursor.execute('rollback;')
-    
+def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis  
     
     if id_type.upper() not in ['NUMERIC','VARCHAR']:
         raise ValueError('Argument invalid, only NUMERIC and VARCHAR aceptable')
@@ -489,3 +479,46 @@ def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis
     
     df = execute_query(conn, inter_zipcode_query, to_frame=True)
     return df
+
+"============================================================================="
+
+def get_zipcode_stations(conn):
+    
+    zipcode_stations_query = """
+    
+            SELECT zipcode, COUNT(*) as num_stations
+            FROM stations.bay_station
+            GROUP BY zipcode
+
+            UNION
+
+            SELECT zipcode, COUNT(*) as num_stations
+            FROM stations.blue_station
+            GROUP BY zipcode
+
+            UNION
+
+            SELECT zipcode, COUNT(*) as num_stations
+            FROM stations.capital_station
+            GROUP BY zipcode
+
+
+            UNION
+
+            SELECT zipcode, COUNT(*) as num_stations
+            FROM stations.citi_station
+            GROUP BY zipcode
+
+            UNION
+
+            SELECT zipcode, COUNT(*) as num_stations
+            FROM stations.divvy_station
+            GROUP BY zipcode  
+            
+            ORDER BY zipcode
+
+            """
+    df= execute_query(conn, zipcode_stations_query, to_frame = True)
+    return df
+    
+"============================================================================="
