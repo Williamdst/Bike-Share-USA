@@ -532,24 +532,54 @@ def get_stations(conn, service: str, drop_indices: list=[]) -> pd.DataFrame():
     # always have at least one trip as an end destination. Whereas the reverse is not true. Additionally,
     # sations that only have trips where they're an end destination are in very few trips (under 10).
     
+    # Some stations get coordinate data in later trips and some never do
     station_query = f"""
-            SELECT DISTINCT ON(startid) startid, startname, start_lat, start_long 
+            SELECT DISTINCT ON(endid) endid, endname, end_lat, end_long 
               FROM staging.{service}_trip
-             WHERE start_lat > 0
+             WHERE end_lat > 0
              UNION
-            SELECT DISTINCT ON(startid) startid, startname, start_lat, start_long
+            SELECT DISTINCT ON(endid) endid, endname, end_lat, end_long
               FROM staging.{service}_trip
-            ORDER BY startid, start_lat
+            ORDER BY endid, end_lat
             """
     
     station = pd.read_sql(station_query, conn)
     station.dropna(inplace=True)
-    station.drop_duplicates(subset=['startid'], keep='last', inplace=True)
+    station.drop_duplicates(subset=['endid'], keep='last', inplace=True)
     
     if len(drop_indices) > 0:
-        station = station.set_index('startid').drop(drop_indices).reset_index()
+        station = station.set_index('endid').drop(drop_indices).reset_index()
     
     return station
 
 
 "============================================================================="
+
+def add_bike_service_name(conn, table: str, name: str, schema: str):
+    """Adds a bikeshare column in the table where every value is the name passed
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    table : str
+        The name of the table to be altered
+    name: str
+        The value that will fill the new column
+    
+    Returns
+    -------
+    None:
+        If executed properly the table will have a new column called bikeshare that is populated with the value of name
+    """
+   
+    add_name_query = f"""
+            ALTER TABLE {schema}.{table}
+            ADD COLUMN bikeshare varchar(8);
+
+            UPDATE {schema}.{table}
+            SET bikeshare = '{name}';
+            """
+          
+    execute_query(conn, add_name_query)    
+    return None
