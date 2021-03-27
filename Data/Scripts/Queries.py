@@ -1,7 +1,7 @@
-import pandas as pd
-from math import ceil
-from typing import Union
 from io import StringIO
+from math import ceil
+import pandas as pd
+from typing import Union
 
 
 def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[None, tuple, pd.DataFrame]:
@@ -146,7 +146,6 @@ def VACUUM_FULL(conn) -> None: # (TAbles) GENERIC QUERY
         Executes the query        
     """
     
-    
     execute_query(conn, 'VACUUM FULL;')
     return None
 
@@ -282,18 +281,6 @@ def station_growth(conn, service: str):  #Analysis
 "============================================================================="
 
 def voronoi_data(conn) -> None: #(Tables)
-    """Delete the rows from the table that have time-swap errors
-    
-    Parameters
-    ----------
-    conn: psycopg2.extensions.connection
-        The connection to the database
-        
-    Returns
-    -------
-    None:
-        Executes the query to find the voronoi polygons for each station   
-    """
 
     voronoi_data_query_citi = f"""
          WITH voronoi AS(

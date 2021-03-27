@@ -1,7 +1,7 @@
-import pandas as pd
-from math import ceil
-from typing import Union
 from io import StringIO
+from math import ceil
+import pandas as pd
+from typing import Union
 
 
 def execute_query(conn, query: str, cols_data=False, to_frame=False) -> Union[None, tuple, pd.DataFrame]:
