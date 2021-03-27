@@ -509,3 +509,47 @@ def get_zipcode_stations(conn):
     return df
     
 "============================================================================="
+
+def get_stations(conn, service: str, drop_indices: list=[]) -> pd.DataFrame():
+    """Derives the unqiue stations from the trip data in the staging schema
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service : str
+        One of the five bikeshare services of interest
+    drop_indices: list
+        A list of indices to drop before returning the stations. Used for stations that aren't actual stations
+    
+    Returns
+    -------
+    pd.DataFrame:
+        Returns a dataframe containing the stations information
+    """
+    
+    # We use startid because stations that have at least one trip as the start destination
+    # always have at least one trip as an end destination. Whereas the reverse is not true. Additionally,
+    # sations that only have trips where they're an end destination are in very few trips (under 10).
+    
+    station_query = f"""
+            SELECT DISTINCT ON(startid) startid, startname, start_lat, start_long 
+              FROM staging.{service}_trip
+             WHERE start_lat > 0
+             UNION
+            SELECT DISTINCT ON(startid) startid, startname, start_lat, start_long
+              FROM staging.{service}_trip
+            ORDER BY startid, start_lat
+            """
+    
+    station = pd.read_sql(station_query, conn)
+    station.dropna(inplace=True)
+    station.drop_duplicates(subset=['startid'], keep='last', inplace=True)
+    
+    if len(drop_indices) > 0:
+        station = station.set_index('startid').drop(drop_indices).reset_index()
+    
+    return station
+
+
+"============================================================================="
