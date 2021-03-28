@@ -583,3 +583,37 @@ def add_bike_service_name(conn, table: str, name: str, schema: str):
           
     execute_query(conn, add_name_query)    
     return None
+
+"============================================================================="
+
+def delete_non_trips(conn, service: str, drop_indices: list) -> None:
+    """Deletes trips from the table that contain any of the drop_indices as
+    
+     Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service : str
+        One of the five bikeshare services of interest
+    drop_indices: list
+        A list of stations to determine which trips get dropped. If a trip has a value in the list it gets dropped
+    
+    Returns
+    -------
+    None:
+        If executed properly there won't be trips with any of the indices   
+    """
+    
+    # Converting the list of indices into a format that PostgreSQL understands
+    drop_indices = [str(element) for element in drop_indices]
+    drop_indices = '(' + ",".join(drop_indices) + ')'
+    return drop_indices
+    
+    delete_non_trips_query = f"""
+            DELETE FROM trips.{service}_trip
+            WHERE startid IN {drop_indices}
+               OR endid IN {drop_indices}
+            """
+    
+    execute_query(conn, delete_non_trips_query)
+    return None
