@@ -471,6 +471,8 @@ def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis
 
 def get_zipcode_stations(conn):
     
+    # WHERE birth <= '2021-01-01'
+    #   AND death IS NULL
     zipcode_stations_query = """
     
             SELECT zipcode, COUNT(*) as num_stations
