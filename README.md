@@ -1,2 +1,2 @@
-# Citi-Bike-Extension
+# Bike Share USA
 Springboard Capstone Project I
