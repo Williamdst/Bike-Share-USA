@@ -477,34 +477,44 @@ def get_zipcode_stations(conn):
     
             SELECT zipcode, COUNT(*) as num_stations
             FROM stations.bay_station
+            WHERE birth <= '2021-01-01' 
+              AND DEATH is null
             GROUP BY zipcode
 
-            UNION
+            UNION 
 
             SELECT zipcode, COUNT(*) as num_stations
             FROM stations.blue_station
+            WHERE birth <= '2021-01-01' 
+              AND DEATH is null
             GROUP BY zipcode
 
             UNION
 
             SELECT zipcode, COUNT(*) as num_stations
             FROM stations.capital_station
+            WHERE birth <= '2021-01-01' 
+              AND DEATH is null
             GROUP BY zipcode
-
 
             UNION
 
             SELECT zipcode, COUNT(*) as num_stations
             FROM stations.citi_station
+            WHERE birth <= '2021-01-01' 
+              AND DEATH is null
             GROUP BY zipcode
 
             UNION
 
             SELECT zipcode, COUNT(*) as num_stations
             FROM stations.divvy_station
-            GROUP BY zipcode  
-            
+            WHERE birth <= '2021-01-01' 
+              AND DEATH is null
+            GROUP BY zipcode
+
             ORDER BY zipcode
+
 
             """
     df= execute_query(conn, zipcode_stations_query, to_frame = True)
