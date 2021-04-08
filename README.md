@@ -18,7 +18,7 @@
 
 From 2013 - 2020 I lived in Melbourne, FL without a car; and for those 7 years I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
 
-<p style="text-align:center"> <i><b> Shoutout to any friend that ever gave me a ride to any place ever.</b></i></p>
+<p style="text-align:center;align:center"> <i><b> Shoutout to any friend that ever gave me a ride to any place ever.</b></i></p>
 
 The height of my walking took place in the last two years when I was teaching at Palm Bay HS. The public bus to take me to the school came ONCE every hour at an inconveient time either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. So the solution was to walk in the Florida heat everyday for two years.
 <ul>
