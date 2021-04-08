@@ -1,11 +1,17 @@
-<div style='text-align:center;'>
-    <img style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
+<div align='center'>
+    <b> Data Science = Solving Problems = Happiness </b>
+</div>
+<div align='center'>
+    <b> Bike Share USA</b>
+</div>
+
+<div align='center'>
     <span style="float:center;text-align:center">
         <span style="text-align:center">
-        <p style="text-align:center;margin:0;font-size:12px;color:#c1121f"> <b> Data Science = Solving Problems = Happiness </b> </p>
-        <p style="text-align:center;font-size:40px;margin:0"> <b> Bike Share USA</b> </p>
-        <p style="text-align:center;margin:0"> Denzel S. Williams </p>
-        <p style="text-align:center;margin:0"> <i> Springboard Data Science Track '20 </i> </p>
+        <p align='center' style="text-align:center;margin:0;font-size:12px;color:#c1121f">  </p>
+        <p align='center' style="text-align:center;font-size:40px;margin:0"> <b> Bike Share USA</b> </p>
+        <p align='center' style="text-align:center;margin:0"> Denzel S. Williams </p>
+        <p align='center' style="text-align:center;margin:0"> <i> Springboard Data Science Track '20 </i> </p>
         </span>
         <a href="https://linkedin.com/in/williamdst">
             <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
@@ -13,6 +19,7 @@
     </span>
 </div>
 
+<img style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
 
 <h2> The Inspiration </h2>
 
@@ -33,16 +40,16 @@ Moving back home in 2020, I discovered New York City's bike sharing program, Cit
 
 <h2> Introduction </h2>
 
+Every major human advancement improved how people, things, or ideas moved from one point to another. Ancient innovations such as agriculture, providing us with a surplus of food, enabled us to stop moving and build civilizations. Present day innovations such as the Internet has taken movement to all new levels. Leveraging the internet, you can order a package and have it delivered by day end or you can send software money, permissionlessly, from one end of the world to another. More so, the internet enables the global movement of information at near instant speeds. 
+
+When it comes to the physical transportation of people, intra-planet space travel and self-driving cars are the talk of the town. However, the greatest macro transportation revolution is happening on a micro level.  Micromobility refers to a range of small, lightweight vehicles operating at speeds typically below 15-mph and driven by users personally. Micromobility devices include, bicycles, e-bikes, electric scooters and skateboards, shared bicycles, and electric pedal assisted bicycles <a href="https://en.wikipedia.org/wiki/Micromobility" target="_blank"> [1]</a>. 
+
 <p align='center'> 
     <img src="./Data/Images/Report/0001.Shared-Micromobility-Graph.png" width="400" />
     <img src="./Data/Images/Report/0002.Shared-Micromobility-Map.png" width="400" />
     <p align='center'> Figure 1. NACTO 2019 Shared Micromobility Report Graphs </p>
 </p>
 
-Every major human advancement improved how people, things, or ideas moved from one point to another. Ancient innovations such as agriculture, providing us with a surplus of food, enabled us to stop moving and build civilizations. Present day innovations such as the Internet has taken movement to all new levels. Leveraging the internet, you can order a package and have it delivered by day end or you can send software money, permissionlessly, from one end of the world to another. More so, the internet enables the global movement of information at near instant speeds. 
-
-When it comes to the physical transportation of people, intra-planet space travel and self-driving cars are the talk of the town. However, the greatest macro transportation revolution is happening on a micro level.  Micromobility refers to a range of small, lightweight vehicles operating at speeds typically below 15-mph and driven by users personally. Micromobility devices include, bicycles, e-bikes, electric scooters and skateboards, shared bicycles, and electric pedal assisted bicycles <a href="https://en.wikipedia.org/wiki/Micromobility" target="_blank"> [1]</a>. 
-         
 According to the 2019 Shared Micromobility Snapshot, published by the National Association of City Transportation Officials (NACTO), the number of trips taken on shared bicycles, e-bikes, and scooters was 136 million; up 60% from 2018’s 84 million and 288% from 2017’s 35 million <a href="https://nacto.org/shared-micromobility-2019/"> [2]</a>.  Although there is not any official data about transportation mode shifting, their survey data suggests that Micromobility might be replacing car trips. The United States (US) has about 19,495 incorporated cities, towns, and villages and of those, 310 are considered at least medium cities with populations of 100,000 or more <a href="https://worldpopulationreview.com/us-city-rankings/how-many-cities-are-in-the-us"> [3]</a>. Looking at the NACTO map there are only about 130 cities that have micromobility services. Imagine if there were micromobility services in all 310 of those cities. Better yet, imagine every part of the United States having micromobility services and instead of a sparse map the shared micromobility map resembled a Verizon 4G LTE Coverage map. 
 
 <p align='center'> <b>The goal of this project is to expand the station-based bike sharing sector of a State's micromobility services. The idea is to use both zip code and bike sharing data of areas that have stations to build a model that can predict the number of stations that should be built in no-station zip codes. The question that this project is looking to answer is: How many bike sharing stations should be built in the zip codes that already have bike stations within the States of: CA, MA, D.C., MD, VA, NJ, NY, and IL?</b> </p> 
@@ -67,7 +74,7 @@ The subset of zip codes that have bike stations are derived from the five larges
 All the zip codes of the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
 
 <ul>
-    <li> Dataset XI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a> (<i>Download the raw .txt file and then change the extension to .csv</i>)
+    <li> Dataset XI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a>
     <li> Dataset XII -<a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2020/delineation-files/list1_2020.xls" > Delineation File </a>
     <li> Dataset XIII -
 <a href="https://www.huduser.gov/portal/datasets/usps_crosswalk.html"> USPS Zipcode Crosswalk Files</a>
