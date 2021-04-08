@@ -100,13 +100,13 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 <h2> Exploratory Data Analytics </h2>
 The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
 
-<p style="text-align:left"> <b> Inter Zip Code Travel</b> </p>
+<h3> <b> Inter Zip Code Travel </h3>
 
 The significance of this project is to guide a bike share company's expansion into new areas. For an expansion into a new area, it is important to expand into multiple zip codes in a region, but the ultimate question is <b>how many</b>. To get an idea of how things should be done, the number of zip codes the stations were spread across when the five services made their inital launches was determined. Additionally, the number of zip codes the stations were in at the end of 2020 was determined. 
 
 <p align='center'>
 <figure style="text-align:center">
     <figcaption style="text-align:center;margin: 10px 0;"> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </figcaption>
-    <img src="./Data/Images/Report/0013.Zip-Expand.jpg" width="100" />
+    <img src="./Data/Images/Report/0013.Zip-Expand.jpg" width="700" />
 </figure>
 <p>
