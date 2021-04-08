@@ -52,7 +52,11 @@ According to the 2019 Shared Micromobility Snapshot, published by the National A
 <p align='center'> <b>The goal of this project is to expand the station-based bike sharing sector of a State's micromobility services. The idea is to use both zip code and bike sharing data of areas that have stations to build a model that can predict the number of stations that should be built in no-station zip codes. The question that this project is looking to answer is: How many bike sharing stations should be built in the zip codes that already have bike stations within the States of: CA, MA, D.C., MD, VA, NJ, NY, and IL?</b> </p> 
 
 
-<h2> The Data Wrangling </h2>
+<h2> The Data Wrangling 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
+        <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='75'/>
+    </a>    
+</h2>
 
 The data used to complete the project can be broken into four major groups. The first two groups were fundamental to completing the project and the other half were required for the Exploratory Data Analytics (EDA):
 
@@ -96,10 +100,10 @@ The datasets in this group have the demographics of those segmented neighborhood
 </ul>
 
 
-<h2> The Database 
-    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" width="75" />
-    <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" width="75" />
-    <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" width="80" />
+<h2> The Database
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
+        <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='75'/>
+    </a>                                                                                                             
 </h2>
 
 All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
@@ -112,7 +116,11 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 
 
 
-<h2> Exploratory Data Analytics </h2>
+<h2> Exploratory Data Analytics 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#EDA">
+        <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='75'/>
+    </a>   
+</h2>
 The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
 
 <h3> Inter Zip Code Travel </h3>
@@ -168,7 +176,11 @@ With an understanding of how many people each station serves the next question t
 </p>
 
 
-<h2>Zip Code Station Predictions</h2>
+<h2>Zip Code Station Predictions
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Prediction">
+        <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='75'/>
+    </a>   
+</h2>
 
 To predict the number of stations that should be in a given zip code, a count of the known number of active stations that exist in the handful of zip codes that are in the five sharing services are taken. Using the zip code features from the zipcodes_profile table in the database, this count will be the target value in our supervised learning regression problem. After the model is trained a pipeline will be built to take in the information that for all the zipcodes that don't already have bike stations.   
 
@@ -196,3 +208,9 @@ The models predicted very similar results. Both mainly predicting 0 stations for
 </p>
 
 <p align='center'> <b> Dear CitiBike, even with all the zeros that the model predicted, 15 stations were recommended for the zip code where I live. Maybe one day you could do an expansion into my area. One spot I recommend is outside my house. </b> </p> 
+
+<h2>
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" width="75" />
+    <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" width="75" />
+    <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" width="80" />
+</h2>
