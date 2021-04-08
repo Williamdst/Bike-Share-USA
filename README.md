@@ -23,19 +23,21 @@
         
 <h2> 0. The Inspiration </h2>
 
-From 2013 - 2020 I lived in Melbourne, FL without a car; and for those 7 years I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
+From 2013 - 2020 I lived in Melbourne, FL without a car; basically a death sentence. From the very start of those 7 years to the final minute, I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
 
 <p style="text-align:center;" align='center'> <i><b> Shoutout to any friend that ever gave me a ride to any place ever.</b></i></p>
 
-The height of my walking took place in the last two years when I was teaching at Palm Bay HS. The public bus to take me to the school came ONCE every hour at an inconveient time either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. So the solution was to walk in the Florida heat everyday for two years.
+The height of my walking took place in the final two years when I was teaching at Palm Bay HS. The public bus to take me to work came ONCE every hour at the "same" inconveient time. Either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. The only solution was to walk to and from work in the Florida heat everyday for two years. 
+
 <ul>
     <li> Why didn't you buy a car? I was BARELY not a broke college student.
-    <li> Ok, why didn't you just get a bike? My apartment couldn't accommodate a bike.
+    <li> Ok, why didn't you just get a bicycle? My apartment couldn't accommodate a bike.
     <li> You could've taken Ubers. Have you lost your mind???
 </ul>
 
-Moving back home in 2020, I discovered New York City's bike sharing program, CitiBike, and wished I had this service during my time in Florida. Even better, I am "fortunate" enough to live in a zip code that <b>doesn't</b> have bikes. So out of wishful thinking and an accidental ingredient of pure jealously, the Bike Share USA project was born. 
+<p style="text-align:center;" align='center'> <i><b> Shoutout to the trees that gave me shade. RIP. </b></i></p>
 
+Moving back home in 2020, I discovered New York City's bike sharing program, CitiBike, and wished I had this service during my time in Florida. Even better, I am "fortunate" enough to live in a zip code that <b>doesn't</b> have bikes. So out of wishful thinking and and pure jealously, the Bike Share USA project was born. 
 
 
 <h2> I. Introduction </h2>
@@ -127,8 +129,6 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 </p>
 
 
-
-
 <h2> IV. Exploratory Data Analytics 
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#EDA">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
@@ -137,7 +137,7 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
         <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
     </a>
 </h2>
-The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
+<p align='right'> <i>The full EDA can be found in the BSU-Report. Shown below are samples from the project. </i> </p>
 
 <h3> Inter Zip Code Travel </h3>
 
