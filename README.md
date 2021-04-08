@@ -33,6 +33,19 @@ Moving back home in 2020, I discovered New York City's bike sharing program, Cit
 
 <h2> Introduction </h2>
 
+<p align='center'> 
+    <img src="./Data/Images/Report/0001.Shared-Micromobility-Graph.png" width="400" />
+    <img src="./Data/Images/Report/0002.Shared-Micromobility-Map.png" width="400" />
+    <p align='center'> Figure 1. NACTO 2019 Shared Micromobility Report Graphs </p>
+</p>
+
+Every major human advancement improved how people, things, or ideas moved from one point to another. Ancient innovations such as agriculture, providing us with a surplus of food, enabled us to stop moving and build civilizations. Present day innovations such as the Internet has taken movement to all new levels. Leveraging the internet, you can order a package and have it delivered by day end or you can send software money, permissionlessly, from one end of the world to another. More so, the internet enables the global movement of information at near instant speeds. 
+
+When it comes to the physical transportation of people, intra-planet space travel and self-driving cars are the talk of the town. However, the greatest macro transportation revolution is happening on a micro level.  Micromobility refers to a range of small, lightweight vehicles operating at speeds typically below 15-mph and driven by users personally. Micromobility devices include, bicycles, e-bikes, electric scooters and skateboards, shared bicycles, and electric pedal assisted bicycles <a href="https://en.wikipedia.org/wiki/Micromobility" target="_blank"> [1]</a>. 
+         
+According to the 2019 Shared Micromobility Snapshot, published by the National Association of City Transportation Officials (NACTO), the number of trips taken on shared bicycles, e-bikes, and scooters was 136 million; up 60% from 2018’s 84 million and 288% from 2017’s 35 million <a href="https://nacto.org/shared-micromobility-2019/"> [2]</a>.  Although there is not any official data about transportation mode shifting, their survey data suggests that Micromobility might be replacing car trips. The United States (US) has about 19,495 incorporated cities, towns, and villages and of those, 310 are considered at least medium cities with populations of 100,000 or more <a href="https://worldpopulationreview.com/us-city-rankings/how-many-cities-are-in-the-us"> [3]</a>. Looking at the NACTO map there are only about 130 cities that have micromobility services. Imagine if there were micromobility services in all 310 of those cities. Better yet, imagine every part of the United States having micromobility services and instead of a sparse map the shared micromobility map resembled a Verizon 4G LTE Coverage map. 
+
+<p align='center'> <b>The goal of this project is to expand the station-based bike sharing sector of a State's micromobility services. The idea is to use both zip code and bike sharing data of areas that have stations to build a model that can predict the number of stations that should be built in no-station zip codes. The question that this project is looking to answer is: How many bike sharing stations should be built in the zip codes that already have bike stations within the States of: CA, MA, D.C., MD, VA, NJ, NY, and IL?</b> </p> 
 
 
 <h2> The Data Wrangling </h2>
@@ -122,9 +135,9 @@ where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is 
 </p>
 
 <p align='center'>
-    <img width='500' src="./Data/Images/Report/0014.NYC-Serve-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img width='500' src="./Data/Images/Report/0014.NYC-Serve-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img width=500' src="./Data/Images/Report/0014.NYC-Serve-Strip.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='300' src="./Data/Images/Report/0014.NYC-Serve-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='300' src="./Data/Images/Report/0014.NYC-Serve-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width=300' src="./Data/Images/Report/0014.NYC-Serve-Strip.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
     <p style="clear:both;">
     <p align='center'> Figure 3. Different visulizations of the number of people served by bike stations in New York City. </p>
 </p>
@@ -132,9 +145,9 @@ where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is 
 Each of the three graphs above show the number of riders served by stations in NYC. They reveal that majority of stations, about 75%, serve between 100K and 225K people. There is a smaller group that serve between 225K and 350K people. Although the people served statistic is interesting, it isn't very useful on in its own. It's impossible to tell if a station with a higher statistic has a bigger voronoi area or has a smaller voronoi area in a denser part of the city. A better statistic to look at would be the ratio between the riders served and the area of the voronoi. The graphs of the ratios for both cities are shown in the graphs below:
 
 <p align='center'>
-    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Borough.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='300' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='300' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='300' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Borough.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
     <p style="clear:both;">
     <p align='center'> Figure 4. Different visualizations of the <b> ratio </b> between people served and the voronoi area of stations in New York City</p>
 </p>
@@ -167,7 +180,7 @@ Five models were used in the training and the results of each model can be seen 
 The Ridge Regression model is chosen as the final model used to make the decision, but the support vector model was also used to make predictions. Two identical pipeline were built minus the final step which used only one of the two models as the predictor. The data that gets fed into the pipeline is the original zipcode data with the "all-zip code" mean shift clustering. The pipeline steps are shown in the figure below:
     
 <p align='center'>
-    <img src="./Data/Images/Report/0023.Pipeline.png" width='600' />
+    <img src="./Data/Images/Report/0023.Pipeline.png" width='650' />
     <p align='center'> Figure 5. A visual representation of the pipeline </p>
 </p>
     
