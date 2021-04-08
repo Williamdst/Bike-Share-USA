@@ -106,7 +106,7 @@ The significance of this project is to guide a bike share company's expansion in
 
 <p align='center'>
 <figure style="text-align:center">
-    <figcaption style="text-align:center;margin: 10px 0;"> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </figcaption>
+    <figcaption style="text-align:center;margin: 10px 0;"  align='center'> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </figcaption>
     <img src="./Data/Images/Report/0013.Zip-Expand.jpg" width="700" />
 </figure>
 <p>
