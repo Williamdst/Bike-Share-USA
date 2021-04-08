@@ -1,3 +1,5 @@
+<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
+
 <div align='center'>
     <b> Data Science = Solving Problems = Happiness </b>
 </div>
@@ -10,13 +12,10 @@
 <div align='center'>
     <i>Springboard Data Science Track '20</i>
     <a href="https://linkedin.com/in/williamdst">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
+        <img align='center'src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
     </a>
+   
 </div>
-
-
-<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
-
  
         
 <h2> The Inspiration </h2>
