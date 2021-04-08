@@ -101,7 +101,7 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 <h2> Exploratory Data Analytics </h2>
 The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
 
-<h3> <b> Inter Zip Code Travel </h3>
+<h3> Inter Zip Code Travel </h3>
 
 The significance of this project is to guide a bike share company's expansion into new areas. For an expansion into a new area, it is important to expand into multiple zip codes in a region, but the ultimate question is <b>how many</b>. To get an idea of how things should be done, the number of zip codes the stations were spread across when the five services made their inital launches was determined. Additionally, the number of zip codes the stations were in at the end of 2020 was determined. 
 
@@ -114,7 +114,13 @@ The significance of this project is to guide a bike share company's expansion in
 
 <h3> How Many People Does Each Station Serve? </h3>
 
-When people use public transportation they go to the spot that is most convient for them. Typically, conveient means the closet. I say typically because there are times when people have to go farther distances to catch a bus or train because the route of the bus/train is more conveient for where they are headed. However, in the case of bike share, there is no incentive to go to a bike station that is farther away from the one that is closet to you. Therefore a station only serves the people that are closer to it than to any other station. The number of people a station serves is defined by the equation $$S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i$$ where $S(s)$ is the number of people served by station $s$, $N$ is the number of neighborhoods in the region (NYC or San Francisco), $A$ is the area function, $G_i$ is the geometry polygon for neighborhood $i$, $V_s$ is the voronoi polygon for station $s$, $P_i$ is the population for neighborhood $i$. 
+When people use public transportation they go to the spot that is most convient for them. Typically, conveient means the closet. I say typically because there are times when people have to go farther distances to catch a bus or train because the route of the bus/train is more conveient for where they are headed. However, in the case of bike share, there is no incentive to go to a bike station that is farther away from the one that is closet to you. Therefore a station only serves the people that are closer to it than to any other station. The number of people a station serves is defined by the equation:
+
+<p align='center'>
+    <img align='center' src="https://render.githubusercontent.com/render/math?math=S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i"> 
+</p>
+
+where $S(s)$ is the number of people served by station $s$, $N$ is the number of neighborhoods in the region (NYC or San Francisco), $A$ is the area function, $G_i$ is the geometry polygon for neighborhood $i$, $V_s$ is the voronoi polygon for station $s$, $P_i$ is the population for neighborhood $i$. 
 
 <p align='center'> <b><i>A Simple Interpretation of the Formula: It's multiplying the portion of a station's voronoi polygon that is in a neighborhood by the population density of that neighborhood.</i></b>
 </p>
