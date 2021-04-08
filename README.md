@@ -11,13 +11,12 @@
 </div>
 <div align='center'>
     <i>Springboard Data Science Track '20</i>
-    <p align='center'>
-        <a href="https://linkedin.com/in/williamdst">
-            <img align='center'src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
-        </a>
-    </p>
 </div>
- 
+<div align='center'>
+    <a href="https://linkedin.com/in/williamdst">
+        <img align='center'src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
+    </a>
+</div> 
         
 <h2> The Inspiration </h2>
 
