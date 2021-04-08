@@ -107,12 +107,13 @@ The datasets in this group have the demographics of those segmented neighborhood
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
         <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
     </a>
-    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/01.Data-Wrangling.ipynb">
-        <img src="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/02.Building-Database.ipynb" width='53' />
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/02.Building-Database.ipynb">
+        <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
     </a>
-    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/01.Data-Wrangling.ipynb">
-        <img src="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/03.Modifying-Database.ipynb" width='53' />
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/03.Modifying-Database.ipynb">
+        <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
     </a>
+
 </h2>
 
 All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
@@ -128,7 +129,10 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 <h2> Exploratory Data Analytics 
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#EDA">
         <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
-    </a>   
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/04.EDA.ipynb">
+        <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
 </h2>
 The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
 
@@ -188,7 +192,10 @@ With an understanding of how many people each station serves the next question t
 <h2>Zip Code Station Predictions
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Prediction">
         <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
-    </a>   
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/05.Prediction.ipynb">
+        <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
 </h2>
 
 To predict the number of stations that should be in a given zip code, a count of the known number of active stations that exist in the handful of zip codes that are in the five sharing services are taken. Using the zip code features from the zipcodes_profile table in the database, this count will be the target value in our supervised learning regression problem. After the model is trained a pipeline will be built to take in the information that for all the zipcodes that don't already have bike stations.   
