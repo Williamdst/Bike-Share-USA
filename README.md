@@ -200,6 +200,7 @@ With an understanding of how many people each station serves the next question t
         <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
     </a>
 </h2>
+<p align='right'> <i>The full Machine Learning can be found in the BSU-Report. Shown below are the model evaluations and the model selection + predictions. </i> </p>
 
 To predict the number of stations that should be in a given zip code, a count of the known number of active stations that exist in the handful of zip codes that are in the five sharing services are taken. Using the zip code features from the zipcodes_profile table in the database, this count will be the target value in our supervised learning regression problem. After the model is trained a pipeline will be built to take in the information that for all the zipcodes that don't already have bike stations.   
 
