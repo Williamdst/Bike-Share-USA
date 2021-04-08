@@ -35,7 +35,7 @@ The height of my walking took place in the final two years when I was teaching a
     <li> You could've taken Ubers. Have you lost your mind???
 </ul>
 
-<p style="text-align:center;" align='center'> <i><b> Shoutout to the trees that gave me shade. RIP. </b></i></p>
+<p style="text-align:center;" align='center'> <i><b> Shoutout to the trees that gave me the small strip of shade. RIP. </b></i></p>
 
 Moving back home in 2020, I discovered New York City's bike sharing program, CitiBike, and wished I had this service during my time in Florida. Even better, I am "fortunate" enough to live in a zip code that <b>doesn't</b> have bikes. So out of wishful thinking and and pure jealously, the Bike Share USA project was born. 
 
