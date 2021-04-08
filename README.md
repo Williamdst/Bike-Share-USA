@@ -21,7 +21,7 @@
     </a> 
 </div> 
         
-<h2> The Inspiration </h2>
+<h2> 0. The Inspiration </h2>
 
 From 2013 - 2020 I lived in Melbourne, FL without a car; and for those 7 years I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
 
@@ -38,7 +38,7 @@ Moving back home in 2020, I discovered New York City's bike sharing program, Cit
 
 
 
-<h2> Introduction </h2>
+<h2> I. Introduction </h2>
 
 Every major human advancement improved how people, things, or ideas moved from one point to another. Ancient innovations such as agriculture, providing us with a surplus of food, enabled us to stop moving and build civilizations. Present day innovations such as the Internet has taken movement to all new levels. Leveraging the internet, you can order a package and have it delivered by day end or you can send software money, permissionlessly, from one end of the world to another. More so, the internet enables the global movement of information at near instant speeds. 
 
@@ -55,7 +55,7 @@ According to the 2019 Shared Micromobility Snapshot, published by the National A
 <p align='center'> <b>The goal of this project is to expand the station-based bike sharing sector of a State's micromobility services. The idea is to use both zip code and bike sharing data of areas that have stations to build a model that can predict the number of stations that should be built in no-station zip codes. The question that this project is looking to answer is: How many bike sharing stations should be built in the zip codes that already have bike stations within the States of: CA, MA, D.C., MD, VA, NJ, NY, and IL?</b> </p> 
 
 
-<h2> The Data Wrangling 
+<h2> II. The Data Wrangling 
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
     </a> 
@@ -106,7 +106,7 @@ The datasets in this group have the demographics of those segmented neighborhood
 </ul>
 
 
-<h2> The Database
+<h2> III. The Database
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
     </a>
@@ -129,7 +129,7 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 
 
 
-<h2> Exploratory Data Analytics 
+<h2> IV. Exploratory Data Analytics 
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#EDA">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
     </a>
@@ -192,7 +192,7 @@ With an understanding of how many people each station serves the next question t
 </p>
 
 
-<h2>Zip Code Station Predictions
+<h2>V. Zip Code Station Predictions
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Prediction">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
     </a>
