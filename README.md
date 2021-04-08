@@ -91,7 +91,7 @@ The datasets in this group have the demographics of those segmented neighborhood
 All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
 
 <p align='center'>
-    <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="750" />
+    <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="550" />
     <p align='center'> Figure 2. Entity Relationship Diagram of the Database </p>
 </p>
 
@@ -120,7 +120,7 @@ When people use public transportation they go to the spot that is most convient 
     <img align='center' src="https://render.githubusercontent.com/render/math?math=S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i"> 
 </p>
 
-where $S(s)$ is the number of people served by station $s$, $N$ is the number of neighborhoods in the region (NYC or San Francisco), $A$ is the area function, $G_i$ is the geometry polygon for neighborhood $i$, $V_s$ is the voronoi polygon for station $s$, $P_i$ is the population for neighborhood $i$. 
+where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is the number of people served by station <img src="https://render.githubusercontent.com/render/math?math=s">, <img src="https://render.githubusercontent.com/render/math?math=N" is the number of neighborhoods in the region (NYC or San Francisco), <img src="https://render.githubusercontent.com/render/math?math=A"> is the area function, <img src="https://render.githubusercontent.com/render/math?math=G_i"> is the geometry polygon for neighborhood <img src="https://render.githubusercontent.com/render/math?math=i">, <img src="https://render.githubusercontent.com/render/math?math=V_s"> is the voronoi polygon for station <img src="https://render.githubusercontent.com/render/math?math=s">, <img src="https://render.githubusercontent.com/render/math?math=P_i"> is the population for neighborhood <img src="https://render.githubusercontent.com/render/math?math=i">. 
 
 <p align='center'> <b><i>A Simple Interpretation of the Formula: It's multiplying the portion of a station's voronoi polygon that is in a neighborhood by the population density of that neighborhood.</i></b>
 </p>
