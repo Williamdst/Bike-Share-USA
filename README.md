@@ -105,8 +105,6 @@ The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analys
 The significance of this project is to guide a bike share company's expansion into new areas. For an expansion into a new area, it is important to expand into multiple zip codes in a region, but the ultimate question is <b>how many</b>. To get an idea of how things should be done, the number of zip codes the stations were spread across when the five services made their inital launches was determined. Additionally, the number of zip codes the stations were in at the end of 2020 was determined. 
 
 <p align='center'>
-    <figure align='center'>
-    <figcaption style="text-align:center;margin: 10px 0;"  align='center'> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </figcaption>
+    <p align='center'> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </p>
     <img src="./Data/Images/Report/0013.Zip-Expand.jpg" width="700" />
-    </figure>
 </p>
