@@ -4,6 +4,14 @@
 <div align='center'>
     <b> Bike Share USA</b>
 </div>
+<div align='center'>
+    Denzel S. Williams
+</div>
+<div align='center'>
+    <i>Springboard Data Science Track '20 Share USA</i>
+</div>
+
+
 
 <div align='center'>
     <span style="float:center;text-align:center">
