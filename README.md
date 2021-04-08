@@ -77,3 +77,20 @@ The datasets in this group have the demographics of those segmented neighborhood
     <li> Dataset VI - <a href = "https://furmancenter.org/neighborhoods"> New York City Neighborhood Profiles </a>
     <li> Dataset VII - <a href = "https://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2012-2016_ACS_Profile_Neighborhoods_Final.pdf"> San Francisco Neighborhood Profiles </a>
 </ul>
+
+
+
+
+
+<h2> The Database 
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" width="75" />
+    <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" width="75" />
+    <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" width="80" />
+</h2>
+
+All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
+
+<figure style="text-align:center">
+    <img src="./Data/Images/Report/0003.ERD-Final.png" style="max-width:50%" />
+    <figcaption style="text-align:center"> Figure 2. Entity Relationship Diagram of the Database </figcaption>
+</figure>
