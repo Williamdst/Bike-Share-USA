@@ -92,6 +92,7 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 
 <p align='center'>
     <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="750" />
+    <p align='center'> Figure 2. Entity Relationship Diagram of the Database </p>
 </p>
 
 
@@ -106,5 +107,5 @@ The significance of this project is to guide a bike share company's expansion in
 
 <p align='center'>
     <p align='center'> Table 1. The initial number of zip codes a bike sharing service launched in and the current number of zip codes it covers. </p>
-    <img src="./Data/Images/Report/0013.Zip-Expand.jpg" width="700" />
+    <img src="./Data/Images/Report/0013.Zip-Expand.jpg" align='center' width="700" />
 </p>
