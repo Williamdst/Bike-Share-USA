@@ -79,9 +79,6 @@ The datasets in this group have the demographics of those segmented neighborhood
 </ul>
 
 
-
-
-
 <h2> The Database 
     <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" width="75" />
     <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" width="75" />
@@ -111,13 +108,12 @@ The significance of this project is to guide a bike share company's expansion in
 </p>
 
 
-
 <h3> How Many People Does Each Station Serve? </h3>
 
 When people use public transportation they go to the spot that is most convient for them. Typically, conveient means the closet. I say typically because there are times when people have to go farther distances to catch a bus or train because the route of the bus/train is more conveient for where they are headed. However, in the case of bike share, there is no incentive to go to a bike station that is farther away from the one that is closet to you. Therefore a station only serves the people that are closer to it than to any other station. The number of people a station serves is defined by the equation:
 
 <p align='center'>
-    <img align='center' src="https://render.githubusercontent.com/render/math?math=S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i"> 
+    <img align='center' width='250' src="https://render.githubusercontent.com/render/math?math=S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i"> 
 </p>
 
 where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is the number of people served by station <img src="https://render.githubusercontent.com/render/math?math=s">, <img src="https://render.githubusercontent.com/render/math?math=N"> is the number of neighborhoods in the region (NYC or San Francisco), <img src="https://render.githubusercontent.com/render/math?math=A"> is the area function, <img src="https://render.githubusercontent.com/render/math?math=G_i"> is the geometry polygon for neighborhood <img src="https://render.githubusercontent.com/render/math?math=i">, <img src="https://render.githubusercontent.com/render/math?math=V_s"> is the voronoi polygon for station <img src="https://render.githubusercontent.com/render/math?math=s">, <img src="https://render.githubusercontent.com/render/math?math=P_i"> is the population for neighborhood <img src="https://render.githubusercontent.com/render/math?math=i">. 
@@ -126,9 +122,9 @@ where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is 
 </p>
 
 <p align='center'>
-    <img src="./Data/Images/Report/0014.NYC-Serve-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img src="./Data/Images/Report/0014.NYC-Serve-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img src="./Data/Images/Report/0014.NYC-Serve-Strip.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='500' src="./Data/Images/Report/0014.NYC-Serve-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='500' src="./Data/Images/Report/0014.NYC-Serve-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width=500' src="./Data/Images/Report/0014.NYC-Serve-Strip.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
     <p style="clear:both;">
     <p align='center'> Figure 3. Different visulizations of the number of people served by bike stations in New York City. </p>
 </p>
@@ -136,11 +132,50 @@ where <img src="https://render.githubusercontent.com/render/math?math=S(s)"> is 
 Each of the three graphs above show the number of riders served by stations in NYC. They reveal that majority of stations, about 75%, serve between 100K and 225K people. There is a smaller group that serve between 225K and 350K people. Although the people served statistic is interesting, it isn't very useful on in its own. It's impossible to tell if a station with a higher statistic has a bigger voronoi area or has a smaller voronoi area in a denser part of the city. A better statistic to look at would be the ratio between the riders served and the area of the voronoi. The graphs of the ratios for both cities are shown in the graphs below:
 
 <p align='center'>
-    <img src="./Data/Images/Report/0017.NYC-Serve-Ratio-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img src="./Data/Images/Report/0017.NYC-Serve-Ratio-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
-    <img src="./Data/Images/Report/0017.NYC-Serve-Ratio-Borough.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Box.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Kernel.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
+    <img width='500' src="./Data/Images/Report/0017.NYC-Serve-Ratio-Borough.jpg" style="float: left; width: 30%; margin-right: 3%; margin-bottom: 0.5em;" />
     <p style="clear:both;">
     <p align='center'> Figure 4. Different visualizations of the <b> ratio </b> between people served and the voronoi area of stations in New York City</p>
 </p>
 
 Looking at just riders served the data was really spread out, the data is much tighter when looking at the ratio between the riders served and the area of the voronoi. Regardless of the borough, regardless of the location, the number of people that a station serves in NYC is rarely over 3.5 people per square meter of it's voronoi polygon. Which makes practical sense because the denser the population of an area the more stations you need to accomodate the population. The more stations packed into one area, the smaller the voronoi area. Although the area is small, it is still serving tons of people. Population density may be an extremely important factor when a company chooses the number of; and the locations of stations in a potential expansion area. 
+
+<h3>Would You Have Bike Access?</h3>
+
+With an understanding of how many people each station serves the next question to ask is: would you even be served to begin with? What is the probability that a randomly selected New Yorker or San Franciscan lives within a certain distance of a station? This question is asking about the <b>accessibility</b> of the overall network of stations. How many people in the city have the OPTION of using bike sharing if they wanted it. When looking to expand into a new area a good goal to shoot for is to distribute stations in a way that allows ~80% of people to reach a station within 10m.
+
+<p align="center">
+    <img src="./Data/Images/Report/0019.Access.jpg" width="750" />
+    <p align="center"> Table 2. The percentages of people that live within a certain distance of a bike sharing station. </p>
+</p>
+
+
+<h2>Zip Code Station Predictions</h2>
+
+To predict the number of stations that should be in a given zip code, a count of the known number of active stations that exist in the handful of zip codes that are in the five sharing services are taken. Using the zip code features from the zipcodes_profile table in the database, this count will be the target value in our supervised learning regression problem. After the model is trained a pipeline will be built to take in the information that for all the zipcodes that don't already have bike stations.   
+
+Five models were used in the training and the results of each model can be seen in the table below. Leveraging the AWS cloud via Sagemaker, the instance type was able to be scaled to hypertune all the models. The tuning was done using TuneSearchCV with hyperopt search optimization and RepeatedKFolding using the default settings (<i>10 repeats of 5 folding</i>). 
+
+
+<p align='center'>
+    <img src="./Data/Images/Report/0023.Model-Results.jpg" width='600' />
+    <p align='center' style="margin: 10px 0;"> Table 3. The training/testing results for the model candidates used in the project </p>
+</p>
+
+
+The Ridge Regression model is chosen as the final model used to make the decision, but the support vector model was also used to make predictions. Two identical pipeline were built minus the final step which used only one of the two models as the predictor. The data that gets fed into the pipeline is the original zipcode data with the "all-zip code" mean shift clustering. The pipeline steps are shown in the figure below:
+    
+<p align='center'>
+    <img src="./Data/Images/Report/0023.Pipeline.png" width='600' />
+    <p align='center'> Figure 5. A visual representation of the pipeline </p>
+</p>
+    
+The models predicted very similar results. Both mainly predicting 0 stations for the majority of zip codes (7700+ out of 9492) and had maximum predictions of about 25. The high number of 0 predictions isn't very suprising being that all the bike sharing services are located in the largest cities of the country (by population). My guess is that the farther a zip code is away from the heart of the city the less stations they get and at some point they shouldn't get any. Bike Sharing isn't suited for areas where a long journey is the norm and a car is really the only appropriate form of transportation. Imagine riding a bike 10 miles to the supermarket (25m BY CAR) and there are no more bikes when you try to go home. Without the other transportation options that urban areas offer, you would have to walk that 10 miles, groceries in hand.
+    
+<p align='center'>
+    <img src="./Data/Images/Report/0024.Final-Prediction.jpg" width="600" />
+    <p align='center'> Figure 6. The number of stations predicted in different zip codes </p>
+</p>
+
+<p align='center'> <b> Dear CitiBike, even with all the zeros that the model predicted, 15 stations were recommended for the zip code where I live. Maybe one day you could do an expansion into my area. One spot I recommend is outside my house. </b> </p> 
