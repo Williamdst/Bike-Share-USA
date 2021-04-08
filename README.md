@@ -1,4 +1,4 @@
-<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="200" />
+<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="800" />
 
 <div align='center'>
     <b> Data Science = Solving Problems = Happiness </b>
