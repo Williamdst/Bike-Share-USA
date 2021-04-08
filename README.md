@@ -91,5 +91,5 @@ The datasets in this group have the demographics of those segmented neighborhood
 All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
 
 <p align='center'>
-    <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="100" />
+    <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="500" />
 </p>
