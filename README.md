@@ -1,4 +1,4 @@
-<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
+<img align='right' width='300' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" />
 
 <div align='center'>
     <b> Data Science = Solving Problems = Happiness </b>
@@ -14,28 +14,33 @@
 </div>
 <div align='center'>
     <a href="https://linkedin.com/in/williamdst">
-        <img align='center'src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
+        <img align='center' src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
     </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='80'/>
+    </a> 
 </div> 
         
-<h2> The Inspiration </h2>
+<h2> 0. The Inspiration </h2>
 
-From 2013 - 2020 I lived in Melbourne, FL without a car; and for those 7 years I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
+From 2013 - 2020 I lived in Melbourne, FL without a car; basically a death sentence. From the very start of those 7 years to the final minute, I pretty much walked to every spot in the 32901/32905 zip code. Grocery stores, check; The Mall, check; College, check; Downtown, check; The Gym, check; Restaurants, check; Barber Shop, check; Places that shouldn't be listed, check. 
 
 <p style="text-align:center;" align='center'> <i><b> Shoutout to any friend that ever gave me a ride to any place ever.</b></i></p>
 
-The height of my walking took place in the last two years when I was teaching at Palm Bay HS. The public bus to take me to the school came ONCE every hour at an inconveient time either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. So the solution was to walk in the Florida heat everyday for two years.
+The height of my walking took place in the final two years when I was teaching at Palm Bay HS. The public bus to take me to work came ONCE every hour at the "same" inconveient time. Either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. The only solution was to walk to and from work in the Florida heat everyday for two years. 
+
 <ul>
     <li> Why didn't you buy a car? I was BARELY not a broke college student.
-    <li> Ok, why didn't you just get a bike? My apartment couldn't accommodate a bike.
+    <li> Ok, why didn't you just get a bicycle? My apartment couldn't accommodate a bike.
     <li> You could've taken Ubers. Have you lost your mind???
 </ul>
 
-Moving back home in 2020, I discovered New York City's bike sharing program, CitiBike, and wished I had this service during my time in Florida. Even better, I am "fortunate" enough to live in a zip code that <b>doesn't</b> have bikes. So out of wishful thinking and an accidental ingredient of pure jealously, the Bike Share USA project was born. 
+<p style="text-align:center;" align='center'> <i><b> Shoutout to the trees that gave me the small strip of shade. RIP. </b></i></p>
+
+Moving back home in 2020, I discovered New York City's bike sharing program, CitiBike, and wished I had this service during my time in Florida. Even better, I am "fortunate" enough to live in a zip code that <b>doesn't</b> have bikes. So out of wishful thinking and and pure jealously, the Bike Share USA project was born. 
 
 
-
-<h2> Introduction </h2>
+<h2> I. Introduction </h2>
 
 Every major human advancement improved how people, things, or ideas moved from one point to another. Ancient innovations such as agriculture, providing us with a surplus of food, enabled us to stop moving and build civilizations. Present day innovations such as the Internet has taken movement to all new levels. Leveraging the internet, you can order a package and have it delivered by day end or you can send software money, permissionlessly, from one end of the world to another. More so, the internet enables the global movement of information at near instant speeds. 
 
@@ -52,7 +57,14 @@ According to the 2019 Shared Micromobility Snapshot, published by the National A
 <p align='center'> <b>The goal of this project is to expand the station-based bike sharing sector of a State's micromobility services. The idea is to use both zip code and bike sharing data of areas that have stations to build a model that can predict the number of stations that should be built in no-station zip codes. The question that this project is looking to answer is: How many bike sharing stations should be built in the zip codes that already have bike stations within the States of: CA, MA, D.C., MD, VA, NJ, NY, and IL?</b> </p> 
 
 
-<h2> The Data Wrangling </h2>
+<h2> II. The Data Wrangling 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
+    </a> 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/01.Data-Wrangling.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
+</h2>
 
 The data used to complete the project can be broken into four major groups. The first two groups were fundamental to completing the project and the other half were required for the Exploratory Data Analytics (EDA):
 
@@ -96,10 +108,17 @@ The datasets in this group have the demographics of those segmented neighborhood
 </ul>
 
 
-<h2> The Database 
-    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" width="75" />
-    <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" width="75" />
-    <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" width="80" />
+<h2> III. The Database
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/02.Building-Database.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/03.Modifying-Database.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
+
 </h2>
 
 All the datasets summed to over 68 GB of data across 350+ files. To work with this data, the best course of action was to build a database. Leveraging the Amazon Web Services (AWS) Cloud a RDS Database running PostgreSQL 12.5 was created on a db.t3.micro instance. With the blank database created, before doing anything, it was important to think about how the data was going to be used for analytics; to determine how it should be feed into the database. With that idea in mind an Entity Relationship Diagram (ERD) was created to structure the database and guide the transformation portion of the upcoming Extract Transform and Load (ETL) jobs. 
@@ -110,10 +129,15 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 </p>
 
 
-
-
-<h2> Exploratory Data Analytics </h2>
-The full EDA can be found in the <a href=""> BSU-Report </a>. Some sample analyses are shown below. 
+<h2> IV. Exploratory Data Analytics 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#EDA">
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/04.EDA.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
+</h2>
+<p align='right'> <i>The full EDA can be found in the BSU-Report. Shown below are samples from the project. </i> </p>
 
 <h3> Inter Zip Code Travel </h3>
 
@@ -168,7 +192,15 @@ With an understanding of how many people each station serves the next question t
 </p>
 
 
-<h2>Zip Code Station Predictions</h2>
+<h2>V. Zip Code Station Predictions
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Prediction">
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='65'/>
+    </a>
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/05.Prediction.ipynb">
+        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+    </a>
+</h2>
+<p align='right'> <i>The full Machine Learning can be found in the BSU-Report. Shown below are the model evaluations and the model selection + predictions. </i> </p>
 
 To predict the number of stations that should be in a given zip code, a count of the known number of active stations that exist in the handful of zip codes that are in the five sharing services are taken. Using the zip code features from the zipcodes_profile table in the database, this count will be the target value in our supervised learning regression problem. After the model is trained a pipeline will be built to take in the information that for all the zipcodes that don't already have bike stations.   
 
