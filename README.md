@@ -55,7 +55,10 @@ According to the 2019 Shared Micromobility Snapshot, published by the National A
 <h2> The Data Wrangling 
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb#Data-Engineering">
         <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='75'/>
-    </a>    
+    </a> 
+    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/01.Data-Wrangling.ipynb">
+        <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='60' />
+    </a>
 </h2>
 
 The data used to complete the project can be broken into four major groups. The first two groups were fundamental to completing the project and the other half were required for the Exploratory Data Analytics (EDA):
