@@ -8,15 +8,16 @@
     Denzel S. Williams
 </div>
 <div align='center'>
-    <i>Springboard Data Science Track '20 Share USA</i>
+    <i>Springboard Data Science Track '20</i>
+    <a href="https://linkedin.com/in/williamdst">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
+    </a>
 </div>
 
 
-<img style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
+<img align='right' width='200' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" width="160" />
 
-  <a href="https://linkedin.com/in/williamdst">
-            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
-  </a>
+ 
         
 <h2> The Inspiration </h2>
 
