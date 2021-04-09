@@ -92,7 +92,7 @@ All the zip codes of the US along with the properties of the zip code are includ
 
 
 <b> Geospatial Datasets </b> <br>
-New York City (NYC) and San Francisco has geospatial boundaries of their segmented neighborhoods. The datasets in this group contain those geospatial multi-polygons. Additionally, the geospatial locations of the MTA Subway Entrances was gathered for particular analytics section.
+New York City (NYC) and San Francisco have geospatial boundaries of their segmented neighborhoods. The datasets in this group contain those geospatial multi-polygons. Additionally, the geospatial locations of the MTA Subway Entrances was gathered for particular analytics section.
 
 <ul>
     <li> Dataset VIII - <a href="https://data.cityofnewyork.us/api/geospatial/yfnk-k7r4?method=export&format=GeoJSON"> NYC Community District GeoJSON File </a>
