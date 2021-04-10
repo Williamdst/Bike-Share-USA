@@ -185,7 +185,7 @@ Looking at just riders served, the data was really spread out, the data is much 
 
 <h3>Would You Have Bike Access?</h3>
 
-With an understanding of how many people each station serves the next question to ask is: would you even be served to begin with? What is the probability that a randomly selected New Yorker or San Franciscan lives within a certain distance of a station? This question is asking about the <b>accessibility</b> of the overall network of stations. How many people in the city have the OPTION of using bike sharing if they wanted it. When looking to expand into a new area a good goal to shoot for is to distribute stations in a way that allows ~80% of people to reach a station within 10m.
+With an understanding of how many people each station serves the next question to ask is: would you even be served to begin with? What is the probability that a randomly selected New Yorker or San Franciscan lives within a certain distance of a station? This question is asking about the <b>accessibility</b> of the overall network of stations. How many people in the city have the OPTION of using bike sharing if they wanted it. When looking to expand into a new area a good goal to shoot for is to distribute stations in a way that allows ~80% of people to reach a station within 10 minutes.
 
 <p align="center">
     <img src="./Data/Images/Report/0019.Access.jpg" width="750" />
