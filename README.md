@@ -152,7 +152,7 @@ The significance of this project is to guide a bike share company's expansion in
 
 <h3> How Many People Does Each Station Serve? </h3>
 
-When people use public transportation they go to the spot that is most convient for them. Typically, conveient means the closet. I say typically because there are times when people have to go farther distances to catch a bus or train because the route of the bus/train is more conveient for where they are headed. However, in the case of bike share, there is no incentive to go to a bike station that is farther away from the one that is closet to you. Therefore a station only serves the people that are closer to it than to any other station. The number of people a station serves is defined by the equation:
+When people use public transportation they go to the spot that is most convenient for them. Typically, convenient means the closet. I say typically because there are times when people have to go farther distances to catch a bus or train because the route of the bus/train is more convenient for where they are headed. However, in the case of bike share, there is no incentive to go to a bike station that is farther away from the one that is closet to you. Therefore a station only serves the people that are closer to it than to any other station. The number of people a station serves is defined by the equation:
 
 <p align='center'>
     <img align='center' width='250' src="https://render.githubusercontent.com/render/math?math=S(s) = \sum_{i=1}^{N}\frac{A(G_i \cap V_s)}{A(G_i)} \cdot P_i"> 
