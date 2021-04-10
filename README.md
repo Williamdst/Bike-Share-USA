@@ -27,7 +27,7 @@ From 2013 - 2020 I lived in Melbourne, FL without a car; basically a death sente
 
 <p style="text-align:center;" align='center'> <i><b> Shoutout to any friend that ever gave me a ride to any place ever.</b></i></p>
 
-The height of my walking took place in the final two years when I was teaching at Palm Bay HS. The public bus to take me to work came ONCE every hour at the "same" inconveient time. Either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. The only solution was to walk to and from work in the Florida heat everyday for two years. 
+The height of my walking took place in the final two years when I was teaching at Palm Bay HS. The public bus to take me to work came ONCE every hour at the "same" inconvenient time. Either getting me to work too early or too late. Even worse the routes were not symmetrical and the bus couldn't take me back home. The only solution was to walk to and from work in the Florida heat everyday for two years. 
 
 <ul>
     <li> Why didn't you buy a car? I was BARELY not a broke college student.
