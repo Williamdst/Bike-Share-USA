@@ -214,7 +214,7 @@ Five models were used in the training and the results of each model can be seen 
 </p>
 
 
-The Ridge Regression model is chosen as the final model used to make the decision, but the support vector model was also used to make predictions. Two identical pipeline were built minus the final step which used only one of the two models as the predictor. The data that gets fed into the pipeline is the original zipcode data with the "all-zip code" mean shift clustering. The pipeline steps are shown in the figure below:
+The Ridge Regression model is chosen as the final model used to make the decision, but the support vector model was also used to make predictions. Two identical pipelines were built minus the final step which used only one of the two models as the predictor. The data that gets fed into the pipeline is the original zipcode data with the "all-zip code" mean shift clustering. The pipeline steps are shown in the figure below:
     
 <p align='center'>
     <img src="./Data/Images/Report/0023.Pipeline.png" width='650' />
