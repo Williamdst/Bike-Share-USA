@@ -19,6 +19,9 @@
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb">
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='80'/>
     </a> 
+    <a href="" />
+        <img align='center' src="https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" width='75' />
+    </a>
 </div> 
         
 <h2> 0. The Inspiration </h2>
