@@ -17,10 +17,10 @@
         <img align='center' src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="75" />
     </a>
     <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/BSU-Report.ipynb">
-        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='80'/>
+        <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='85'/>
     </a> 
-    <a href="" />
-        <img align='center' src="https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" width='75' />
+    <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/BSU-Presentation.pdf" />
+        <img align='center' src="https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" width='90' />
     </a>
 </div> 
         
