@@ -20,7 +20,7 @@
         <img align='center' src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" width='85'/>
     </a> 
     <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/BSU-Presentation.pdf" />
-        <img align='center' src="https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" width='90' />
+        <img align='center' src="https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" width='150' />
     </a>
 </div> 
         
