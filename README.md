@@ -26,7 +26,7 @@
 
 <div align="center">
   <h4>
-    <a href="https://public.tableau.com/profile/denzel.s.williams#!/vizhome/Bike-Share-USA/HorizontalExpansions">
+    <a href="https://public.tableau.com/profile/denzel.s.williams#!/vizhome/Bike-Share-USA/HorizontalExpansions" target="_blank">
       Tableau Storyboard
     </a>
     <span> | </span>
