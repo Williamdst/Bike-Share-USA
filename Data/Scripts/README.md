@@ -1,4 +1,4 @@
-<h2> Introducing the Queries Package <h2>
+<h2> Introducing the Queries Package </h2>
 
 The Queries Package is a custom package containing custom queries that execute against our database. The most used function in this package is the execute_query function which takes in a SQL statement and makes the execution. There are queries that return results and the execute_query function has the option of returning the results as a pandas dataframe or a 2 length tuple of the (column_names, data).
 
