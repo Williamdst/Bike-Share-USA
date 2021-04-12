@@ -233,6 +233,8 @@ The models predicted very similar results. Both mainly predicting 0 stations for
 
 <p align='center'> <b> Dear CitiBike, even with all the zeros that the model predicted, 15 stations were recommended for the zip code where I live. Maybe one day you could do an expansion into my area. One spot I recommend is outside my house. </b> </p> 
 
+<hr>
+
 <h3> Acknowledgements </h3>
 
 I want to give a shoutout to my mentor Devin Cavagnaro for providing me with the zip code data and guiding me through the difficult stages of the project. His simple words of advice such as "right click the link and copy the address" saved me hours of work and his more complex guidance saved me from burning the project to the ground. More so, he let me run wild with all my crazy ideas although they took a shameful amount of time to implement. 
