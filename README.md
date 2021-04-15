@@ -100,9 +100,9 @@ The subset of zip codes that have bike stations are derived from the five larges
 All the zip codes of the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
 
 <ul>
-    <li> Dataset XI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a>
-    <li> Dataset XII -<a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2020/delineation-files/list1_2020.xls" > Delineation File </a>
-    <li> Dataset XIII -
+    <li> Dataset VI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a>
+    <li> Dataset VII -<a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2020/delineation-files/list1_2020.xls" > Delineation File </a>
+    <li> Dataset VIII -
 <a href="https://www.huduser.gov/portal/datasets/usps_crosswalk.html"> USPS Zipcode Crosswalk Files</a>
 </ul>
 
@@ -111,17 +111,17 @@ All the zip codes of the US along with the properties of the zip code are includ
 New York City (NYC) and San Francisco have geospatial boundaries of their segmented neighborhoods. The datasets in this group contain those geospatial multi-polygons. Additionally, the geospatial locations of the MTA Subway Entrances was gathered for particular analytics section.
 
 <ul>
-    <li> Dataset VIII - <a href="https://data.cityofnewyork.us/api/geospatial/yfnk-k7r4?method=export&format=GeoJSON"> NYC Community District GeoJSON File </a>
-    <li> Dataset IX - <a href="https://data.sfgov.org/api/geospatial/p5b7-5n3h?method=export&format=GeoJSON"> San Francisco Community District GeoJSON File </a>
-    <li> Dataset X - <a href="https://data.cityofnewyork.us/api/geospatial/drex-xx56?method=export&format=GeoJSON"> Subway Entrance GeoJSON File </a>
+    <li> Dataset IX - <a href="https://data.cityofnewyork.us/api/geospatial/yfnk-k7r4?method=export&format=GeoJSON"> NYC Community District GeoJSON File </a>
+    <li> Dataset X - <a href="https://data.sfgov.org/api/geospatial/p5b7-5n3h?method=export&format=GeoJSON"> San Francisco Community District GeoJSON File </a>
+    <li> Dataset XI - <a href="https://data.cityofnewyork.us/api/geospatial/drex-xx56?method=export&format=GeoJSON"> Subway Entrance GeoJSON File </a>
 </ul>
 
 <b> Neighborhood Profile Datasets </b> <br>
 The datasets in this group have the demographics of those segmented neighborhoods. These demographics, when combined with the geospatial data were used to do two custom analyses in the EDA portion of the project. The analysis used both the station location point geometries and the Voronoi polygons of the station locations. 
 
 <ul>
-    <li> Dataset VI - <a href = "https://furmancenter.org/neighborhoods"> New York City Neighborhood Profiles </a>
-    <li> Dataset VII - <a href = "https://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2012-2016_ACS_Profile_Neighborhoods_Final.pdf"> San Francisco Neighborhood Profiles </a>
+    <li> Dataset XII - <a href = "https://furmancenter.org/neighborhoods"> New York City Neighborhood Profiles </a>
+    <li> Dataset XIII - <a href = "https://default.sfplanning.org/publications_reports/SF_NGBD_SocioEconomic_Profiles/2012-2016_ACS_Profile_Neighborhoods_Final.pdf"> San Francisco Neighborhood Profiles </a>
 </ul>
 
 

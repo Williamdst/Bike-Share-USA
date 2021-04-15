@@ -1,9 +1,10 @@
 <p align="center">
-    Use the 
-    <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/">
-        <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
-    </a> 
-    Links to View the Notebook on NBviewer
+    <b> Use the 
+        <a href="https://nbviewer.jupyter.org/github/Williamdst/Bike-Share-USA/blob/main/Notebooks/">
+            <img align='center' src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" width='53' />
+        </a> 
+        Links to View the Notebooks on NBviewer 
+    </b>
 </p>
 
 <h2> Data Wrangling 
