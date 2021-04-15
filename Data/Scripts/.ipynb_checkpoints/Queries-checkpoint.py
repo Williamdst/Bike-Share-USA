@@ -246,6 +246,22 @@ def birth_certificate(conn, service, id_type = 'NUMERIC') -> None: #(Tables)
 "============================================================================="
 
 def station_growth(conn, service: str):  #Analysis
+    """Calculates the number of stations that a service added minus the number
+       of stations that they removed for every year that they were operating.
+       
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service: str
+        The bike station service whose station growth table will created
+    
+    Returns
+    -------
+    pd.DataFrame:
+        Returns a dataframe with the number of stations added in a year and the running total
+        of the stations added. 
+    """  
     
     station_growth_query = f"""
             SELECT
@@ -281,7 +297,19 @@ def station_growth(conn, service: str):  #Analysis
 "============================================================================="
 
 def voronoi_data(conn) -> None: #(Tables)
+    """Calculates the voronoi polygons for every active station in CitiBike and BayWheels
+       
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
 
+    Returns
+    -------
+    None:
+        If executed properly the station table for Citi and Bay should have voronoi polygons for active stations
+    """  
+    
     voronoi_data_query_citi = f"""
          WITH voronoi AS(
               SELECT 
@@ -326,7 +354,22 @@ def voronoi_data(conn) -> None: #(Tables)
 "============================================================================="
 
 def trip_from_staging(conn, service, id_type = 'NUMERIC'):
-    
+    """Calculates the voronoi polygons for every active station in CitiBike and BayWheels
+       
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service: str
+        The bike station service whose trip table will be created
+    id_type: str
+        The column type of the startID/endID column
+        
+    Returns
+    -------
+    None:
+        If executed properly a trip table will be created and filled for the service in the Trips schema
+    """     
     trip_from_staging_query = f"""
             CREATE TABLE trips.{service}_trip as (
                 SELECT 
@@ -394,6 +437,24 @@ def trip_from_staging(conn, service, id_type = 'NUMERIC'):
 "============================================================================="
 
 def n_popular_stations(conn, service, n=5, ranking = 'total'):
+    """Calculates the top n stations based on the ranking type for a service
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service: str
+        The bike station service whose popular stations will be found
+    n: int
+        The number of rankings to return
+    ranking: str
+        The type of ranking to use: total points, start points, or end points
+        
+    Returns
+    -------
+    pd.DataFrame:
+        A dataframe of the top n stations for the service    
+    """
     
     if ranking == 'total':
         ranking = 'startpoints.startpoints + endpoints.endpoints'
@@ -447,6 +508,22 @@ def n_popular_stations(conn, service, n=5, ranking = 'total'):
 "============================================================================="
 
 def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis  
+    """Calculates the percent of trips taken that were in between two zip codes
+    
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    service: str
+        The bike station service whose popular stations will be found
+    id_type: str
+        The column type of the startID/endID column
+           
+    Returns
+    -------
+    pd.DataFrame:
+        A dataframe with the percent of trips taken in between two zip codes for every year of the service   
+    """  
     
     if id_type.upper() not in ['NUMERIC','VARCHAR']:
         raise ValueError('Argument invalid, only NUMERIC and VARCHAR aceptable')
@@ -470,9 +547,18 @@ def inter_zipcode_travel(conn, service, id_type = 'NUMERIC'): #Analysis
 "============================================================================="
 
 def get_zipcode_stations(conn):
+    """Calculates the number of stations in a zip code
     
-    # WHERE birth <= '2021-01-01'
-    #   AND death IS NULL
+    Parameters
+    ----------
+    conn: psycopg2.extensions.connection
+        The connection to the database
+    Returns
+    -------
+    pd.DataFrame:
+        A dataframe with the number of stations in every zip code.   
+    """  
+    
     zipcode_stations_query = """
     
             SELECT zipcode, COUNT(*) as num_stations
