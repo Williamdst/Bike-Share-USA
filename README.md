@@ -143,6 +143,11 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 <p align='center'>
     <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="550" />
     <p align='center'> Figure 2. Entity Relationship Diagram of the Database </p>
+    <p align='center'> 
+        <a href="./Data/Images/Report/Report/0003.ERD-Final-White.png">
+            Link For My Dark Themers
+        </a> 
+    </p>
 </p>
 
 
