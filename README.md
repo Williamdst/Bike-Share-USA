@@ -97,7 +97,7 @@ The subset of zip codes that have bike stations are derived from the five larges
 </ul>
 
 <b> Zip Code Datasets </b> <br>
-All the zip codes of the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
+All the zip codes in the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
 
 <ul>
     <li> Dataset VI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a>
