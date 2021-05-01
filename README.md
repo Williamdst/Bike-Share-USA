@@ -97,7 +97,7 @@ The subset of zip codes that have bike stations are derived from the five larges
 </ul>
 
 <b> Zip Code Datasets </b> <br>
-All the zip codes of the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
+All the zip codes in the US along with the properties of the zip code are included in this group. Properties such as the total population, core based statistical area classification, and water area are included. Two supplementary files were used to help fill missing values within the main zip code file. 
 
 <ul>
     <li> Dataset VI - <a href="https://github.com/Williamdst/Bike-Share-USA/blob/main/Data/ZX01_Zipcodes-USA.csv"> Zipcode USA Data </a>
@@ -143,6 +143,11 @@ All the datasets summed to over 68 GB of data across 350+ files. To work with th
 <p align='center'>
     <img src="./Data/Images/Report/0003.ERD-Final.png" align='center' width="550" />
     <p align='center'> Figure 2. Entity Relationship Diagram of the Database </p>
+    <p align='center'> 
+        <a href="./Data/Images/Report/0003.ERD-Final-White.png">
+            Link For My Dark Themers
+        </a> 
+    </p>
 </p>
 
 
@@ -251,3 +256,7 @@ The models predicted very similar results. Both mainly predicting 0 stations for
 <h3> Acknowledgements </h3>
 
 I want to give a shoutout to my mentor Devin Cavagnaro for providing me with the zip code data and guiding me through the difficult stages of the project. His simple words of advice such as "right click the link and copy the address" saved me hours of work and his more complex guidance saved me from burning the project to the ground. More so, he let me run wild with all my crazy ideas although they took a shameful amount of time to implement. 
+<br></br>
+
+Thanks <a href="https://github.com/alexandresanlim/Badges4-README.md-Profile"> Alexandre Sanlim </a> for the repository of awesome badges and <a href="https://www.slidescarnival.com/who-makes-slidescarnival"> Jimena Catlina </a> for the beautiful powerpoint template.
+
