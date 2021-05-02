@@ -626,10 +626,6 @@ def get_stations(conn, service: str, drop_indices: list=[]) -> pd.DataFrame():
         Returns a dataframe containing the stations information
     """
     
-    # We use startid because stations that have at least one trip as the start destination
-    # always have at least one trip as an end destination. Whereas the reverse is not true. Additionally,
-    # sations that only have trips where they're an end destination are in very few trips (under 10).
-    
     # Some stations get coordinate data in later trips and some never do
     station_query = f"""
             SELECT DISTINCT ON(endid) endid, endname, end_lat, end_long 
