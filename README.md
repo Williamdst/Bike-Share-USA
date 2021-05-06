@@ -1,4 +1,4 @@
-<img align='right' width='300' style="float:right;" src="./Data/Images/Report/0000.Coffee-Bike.png" />
+<img align='right' width='300' style="float:right;" src="https://raw.githubusercontent.com/Williamdst/Bike-Share-USA/main/Data/Images/Report/0000.Coffee-Bike.png" />
 
 <div align='center'>
     <b> Data Science = Solving Problems = Happiness </b>
