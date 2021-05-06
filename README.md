@@ -29,11 +29,6 @@
     <a href="https://public.tableau.com/profile/denzel.s.williams#!/vizhome/Bike-Share-USA/HorizontalExpansions" target="_blank">
       Tableau Storyboard
     </a>
-    <span> | </span>
-    <a href="">
-      DBFiddle <i>(Coming Soon)</i>
-    </a>
-    <span> | </span>
   </h4>
 </div>
         
